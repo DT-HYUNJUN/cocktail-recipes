@@ -47,7 +47,7 @@ const Home = () => {
         mt={10}
       >
         <Typography variant="h5" gutterBottom>
-          오늘의 추천 칵테일
+          랜덤 칵테일
         </Typography>
         <RecipeCard />
       </Box>
