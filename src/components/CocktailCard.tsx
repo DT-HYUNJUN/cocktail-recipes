@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
 import { setSelectedCockatil } from "../features/cocktail/cocktailSlice"
 
-const RecipeCard = () => {
+const CocktailCard = () => {
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
@@ -28,11 +28,15 @@ const RecipeCard = () => {
           />
         </CardActionArea>
       </Card>
-      <Typography gutterBottom variant="subtitle1" component="p">
+      <Typography
+        fontFamily="NanumSquareNeoBold"
+        gutterBottom
+        variant="subtitle1"
+      >
         {drink.strDrink}
       </Typography>
     </div>
   )
 }
 
-export default RecipeCard
+export default CocktailCard

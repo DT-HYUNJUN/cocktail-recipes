@@ -3,7 +3,8 @@ import "./App.css"
 import Home from "./pages/Home"
 import { ThemeProvider, createTheme } from "@mui/material"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import DrinkDetail from "./pages/DrinkDetail"
+import DrinkDetail from "./pages/CocktailDetail"
+import BaseIngredDrinks from "./pages/BaseIngredCocktails"
 
 const theme = createTheme({
   typography: {
@@ -19,6 +20,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/drink/:idDrink" element={<DrinkDetail />} />
+            <Route path="/:Ingred" element={<BaseIngredDrinks />} />
           </Routes>
         </BrowserRouter>
       </Wrap>

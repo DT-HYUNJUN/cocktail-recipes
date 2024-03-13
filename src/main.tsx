@@ -3,16 +3,21 @@ import { Provider } from "react-redux"
 import App from "./App"
 import { store } from "./app/store"
 import "./index.css"
+import { persistStore } from "redux-persist"
+import { PersistGate } from "redux-persist/integration/react"
 
 const container = document.getElementById("root")
 
 if (container) {
   const root = createRoot(container)
+  const persistor = persistStore(store)
 
   root.render(
     // <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>,
     // </React.StrictMode>,
   )

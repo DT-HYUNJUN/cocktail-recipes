@@ -1,5 +1,6 @@
+import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
-import type { IDrink } from "../../types"
+import type { IDrink, IDrinkAPI } from "../../types"
 
 const initialCocktail: IDrink = {
   idDrink: "",
@@ -48,18 +49,20 @@ const initialCocktail: IDrink = {
 export interface CocktailSliceState {
   selectedCocktail: IDrink
   randomCocktail: IDrink
+  cocktailList: IDrink[]
 }
 
 const initialState: CocktailSliceState = {
   selectedCocktail: initialCocktail,
   randomCocktail: initialCocktail,
+  cocktailList: [],
 }
 
 export const cocktailSlice = createSlice({
   name: "cocktail",
   initialState,
   reducers: {
-    setSelectedCockatil(state, action) {
+    setSelectedCockatil(state, action: PayloadAction<IDrinkAPI>) {
       state.selectedCocktail.idDrink = action.payload.idDrink
       state.selectedCocktail.strDrink = action.payload.strDrink
       state.selectedCocktail.strCategory = action.payload.strCategory
@@ -67,14 +70,6 @@ export const cocktailSlice = createSlice({
       state.selectedCocktail.strGlass = action.payload.strGlass
       state.selectedCocktail.strInstructions = action.payload.strInstructions
       state.selectedCocktail.strDrinkThumb = action.payload.strDrinkThumb
-      // action.payload.strInstructions.split(".").forEach((element: string) => {
-      //   let id = 0
-      //   state.selectedCocktail.instructions.push({
-      //     id: id,
-      //     strInstruction: element,
-      //   })
-      //   id += 1
-      // })
       for (let i = 1; i <= 15; i++) {
         const ingredKey = `strIngredient${i}`
         const ingredValue: string = action.payload[ingredKey]
@@ -90,7 +85,7 @@ export const cocktailSlice = createSlice({
         }
       }
     },
-    setRandomCocktail(state, action) {
+    setRandomCocktail(state, action: PayloadAction<IDrinkAPI>) {
       state.randomCocktail.idDrink = action.payload.idDrink
       state.randomCocktail.strDrink = action.payload.strDrink
       state.randomCocktail.strCategory = action.payload.strCategory
@@ -98,14 +93,6 @@ export const cocktailSlice = createSlice({
       state.randomCocktail.strGlass = action.payload.strGlass
       state.randomCocktail.strInstructions = action.payload.strInstructions
       state.randomCocktail.strDrinkThumb = action.payload.strDrinkThumb
-      // action.payload.strInstructions.split(".").forEach((element: string) => {
-      //   let id = 0
-      //   state.randomCocktail.instructions.push({
-      //     id: id,
-      //     strInstruction: element,
-      //   })
-      //   id += 1
-      // })
       for (let i = 1; i <= 15; i++) {
         const ingredKey = `strIngredient${i}`
         const ingredValue = action.payload[ingredKey]
@@ -121,9 +108,13 @@ export const cocktailSlice = createSlice({
         }
       }
     },
+    setCocktailList(state, action: PayloadAction<IDrinkAPI[]>) {
+      action.payload.forEach(drink => {})
+    },
   },
 })
 
-export const { setSelectedCockatil, setRandomCocktail } = cocktailSlice.actions
+export const { setSelectedCockatil, setRandomCocktail, setCocktailList } =
+  cocktailSlice.actions
 
 export default cocktailSlice.reducer

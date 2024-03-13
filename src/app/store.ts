@@ -1,17 +1,36 @@
+/// <reference types="redux-persist/types" />
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
 import cocktailReducer from "../features/cocktail/cocktailSlice"
+import storage from "redux-persist/lib/storage"
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+  persistReducer,
+} from "redux-persist"
 
-// `combineSlices` automatically combines the reducers using
-// their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-// Infer the `RootState` type from the root reducer
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+}
 
-// The store setup is wrapped in `makeStore` to allow reuse
-// when setting up tests that need the same store config
+const persistedReducer = persistReducer(persistConfig, cocktailReducer)
+
 export const makeStore = (preloadedState?: Partial<RootState>) => {
   const store = configureStore({
-    reducer: cocktailReducer,
+    reducer: persistedReducer,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }),
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.
   })

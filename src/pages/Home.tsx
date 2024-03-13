@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { Box, Container, Typography, styled } from "@mui/material"
 import SearchIcon from "@mui/icons-material/Search"
-import RecipeCard from "../components/RecipeCard"
+import RecipeCard from "../components/CocktailCard"
 import { getRandomDrink } from "../features/cocktail/cocktailAPI"
 import type { IDrink } from "../types"
 import { setRandomCocktail } from "../features/cocktail/cocktailSlice"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
+import BaseIngredient from "../components/BaseIngredient"
 
 const Home = () => {
   const [search, setSearch] = useState("")
@@ -46,10 +47,11 @@ const Home = () => {
         justifyContent="center"
         mt={10}
       >
-        <Typography variant="h5" gutterBottom>
+        <Typography fontFamily="NanumSquareNeoHeavy" variant="h5" gutterBottom>
           랜덤 칵테일
         </Typography>
         <RecipeCard />
+        <BaseIngredient />
       </Box>
     </Container>
   )
