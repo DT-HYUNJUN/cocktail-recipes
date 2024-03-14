@@ -8,11 +8,16 @@ import { setRandomCocktail } from "../features/cocktail/cocktailSlice"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
 import BaseIngredient from "../components/BaseIngredient"
+import { useNavigate } from "react-router-dom"
 
 const Home = () => {
-  const [search, setSearch] = useState("")
+  const [searchInput, setSearchInput] = useState("")
+
+  const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
+
+  const randomDrink = useAppSelector((state: RootState) => state.randomCocktail)
 
   useEffect(() => {
     const fetchRandomCocktail = async () => {
@@ -23,16 +28,21 @@ const Home = () => {
   }, [])
 
   const handleInputSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value)
+    setSearchInput(e.target.value)
+  }
+
+  const handleSubmitSearch = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    navigate(`/search/${searchInput}`)
   }
 
   return (
     <Container>
-      <Box component="div" display="flex" justifyContent="center" pt={5}>
-        <SearchForm>
+      <Box component="div" display="flex" justifyContent="center">
+        <SearchForm onSubmit={handleSubmitSearch}>
           <SearchIcon sx={{ color: "grey" }} fontSize="small" />
           <SearchInput
-            value={search}
+            value={searchInput}
             onChange={handleInputSearch}
             type="text"
             placeholder="칵테일 또는 재료를 검색해보세요."
@@ -50,7 +60,7 @@ const Home = () => {
         <Typography fontFamily="NanumSquareNeoHeavy" variant="h5" gutterBottom>
           랜덤 칵테일
         </Typography>
-        <RecipeCard />
+        <RecipeCard drink={randomDrink} />
         <BaseIngredient />
       </Box>
     </Container>

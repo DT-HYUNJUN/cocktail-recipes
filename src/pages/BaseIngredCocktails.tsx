@@ -1,30 +1,16 @@
-import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { getByIngredient } from "../features/cocktail/cocktailAPI"
-import type { IDrink } from "../types"
 import CocktailCard from "../components/CocktailCard"
 import { Box, Container } from "@mui/material"
-import { useAppDispatch, useAppSelector } from "../app/hooks"
-import { setCocktailList } from "../features/cocktail/cocktailSlice"
+import { useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
+import BackButton from "../components/BackButton"
 
 const BaseIngredCocktails = () => {
-  const { Ingred } = useParams()
-
-  const dispatch = useAppDispatch()
   const drinkList = useAppSelector((state: RootState) => state.cocktailList)
-
-  useEffect(() => {
-    const fetchByIngredient = async () => {
-      const drinks = await getByIngredient(Ingred!)
-      dispatch(setCocktailList(drinks))
-    }
-    fetchByIngredient()
-  }, [])
 
   return (
     drinkList && (
       <Container>
+        <BackButton />
         <Box
           display="flex"
           flexDirection="column"
@@ -33,7 +19,7 @@ const BaseIngredCocktails = () => {
           pt={4}
         >
           {drinkList.map(drink => (
-            <CocktailCard key={drink.idDrink} />
+            <CocktailCard key={drink.idDrink} drink={drink} />
           ))}
         </Box>
       </Container>

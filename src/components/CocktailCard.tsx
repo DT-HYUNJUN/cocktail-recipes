@@ -1,19 +1,21 @@
 import { Card, CardActionArea, CardMedia, Typography } from "@mui/material"
 import { useNavigate } from "react-router-dom"
-import { useAppDispatch, useAppSelector } from "../app/hooks"
-import type { RootState } from "../app/store"
+import { useAppDispatch } from "../app/hooks"
 import { setSelectedCockatil } from "../features/cocktail/cocktailSlice"
+import type { IDrink } from "../types"
 
-const CocktailCard = () => {
+interface Props {
+  drink: IDrink
+}
+
+const CocktailCard = (props: Props) => {
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
 
-  const drink = useAppSelector((state: RootState) => state.randomCocktail)
-
   const handleClickDrink = () => {
-    dispatch(setSelectedCockatil(drink))
-    navigate(`/drink/${drink.idDrink}`)
+    dispatch(setSelectedCockatil(props.drink))
+    navigate(`/drink/${props.drink.idDrink}`)
   }
 
   return (
@@ -23,7 +25,7 @@ const CocktailCard = () => {
           <CardMedia
             component="img"
             height="200"
-            image={drink.strDrinkThumb}
+            image={props.drink.strDrinkThumb}
             alt="preview"
           />
         </CardActionArea>
@@ -33,7 +35,7 @@ const CocktailCard = () => {
         gutterBottom
         variant="subtitle1"
       >
-        {drink.strDrink}
+        {props.drink.strDrink}
       </Typography>
     </div>
   )

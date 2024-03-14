@@ -11,6 +11,7 @@ export interface IDrink {
 }
 
 export interface IDrinkAPI {
+  [key: string]: string
   idDrink: string
   strDrink: string
   strDrinkAlternate: string
@@ -62,4 +63,13 @@ export interface IDrinkAPI {
   strImageAttribution: string
   strCreativeCommonsConfirmed: string
   dateModified: string
+}
+
+export interface IIngredient {
+  idIngredient: string
+  strIngredient: string
+  strDescription: string
+  strType: string
+  strAlcohol: string
+  strABV: string
 }

@@ -1,6 +1,6 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
-import type { IDrink, IDrinkAPI } from "../../types"
+import type { IDrink, IDrinkAPI, IIngredient } from "../../types"
 
 const initialCocktail: IDrink = {
   idDrink: "",
@@ -50,19 +50,21 @@ export interface CocktailSliceState {
   selectedCocktail: IDrink
   randomCocktail: IDrink
   cocktailList: IDrink[]
+  ingredientList: IIngredient[]
 }
 
 const initialState: CocktailSliceState = {
   selectedCocktail: initialCocktail,
   randomCocktail: initialCocktail,
   cocktailList: [],
+  ingredientList: [],
 }
 
 export const cocktailSlice = createSlice({
   name: "cocktail",
   initialState,
   reducers: {
-    setSelectedCockatil(state, action: PayloadAction<IDrinkAPI>) {
+    setSelectedCockatil(state, action) {
       state.selectedCocktail.idDrink = action.payload.idDrink
       state.selectedCocktail.strDrink = action.payload.strDrink
       state.selectedCocktail.strCategory = action.payload.strCategory
@@ -72,7 +74,7 @@ export const cocktailSlice = createSlice({
       state.selectedCocktail.strDrinkThumb = action.payload.strDrinkThumb
       for (let i = 1; i <= 15; i++) {
         const ingredKey = `strIngredient${i}`
-        const ingredValue: string = action.payload[ingredKey]
+        const ingredValue = action.payload[ingredKey]
         if (ingredValue) {
           state.selectedCocktail.ingredients[i - 1].strIngredient = ingredValue
         }
@@ -109,12 +111,48 @@ export const cocktailSlice = createSlice({
       }
     },
     setCocktailList(state, action: PayloadAction<IDrinkAPI[]>) {
-      action.payload.forEach(drink => {})
+      let id = 0
+      action.payload.forEach(drink => {
+        const temp = {
+          idDrink: drink.idDrink,
+          strDrink: drink.strDrink,
+          strCategory: drink.strCategory,
+          strAlcoholic: drink.strAlcoholic,
+          strGlass: drink.strGlass,
+          strInstructions: drink.strInstructions,
+          strDrinkThumb: drink.strDrinkThumb,
+          ingredients: [{ id: 0, strIngredient: "" }],
+          measures: [{ id: 0, strMeasure: "" }],
+        }
+        for (let i = 1; i <= 15; i++) {
+          const ingredKey = `strIngredient${i}`
+          const ingredValue = drink[ingredKey]
+          if (ingredValue) {
+            temp.ingredients.push({ id: i - 1, strIngredient: ingredValue })
+          }
+        }
+        for (let i = 1; i <= 15; i++) {
+          const measureKey = `strMeasure${i}`
+          const measureValue = drink[measureKey]
+          if (measureValue) {
+            temp.measures.push({ id: i - 1, strMeasure: measureValue })
+          }
+        }
+        state.cocktailList[id] = temp
+        id += 1
+      })
+    },
+    setIngredientsList(state, action: PayloadAction<IIngredient[]>) {
+      state.ingredientList = action.payload
     },
   },
 })
 
-export const { setSelectedCockatil, setRandomCocktail, setCocktailList } =
-  cocktailSlice.actions
+export const {
+  setSelectedCockatil,
+  setRandomCocktail,
+  setCocktailList,
+  setIngredientsList,
+} = cocktailSlice.actions
 
 export default cocktailSlice.reducer

@@ -1,4 +1,7 @@
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Button,
   Container,
@@ -10,9 +13,7 @@ import { useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
 import BackButton from "../components/BackButton"
 import { useEffect } from "react"
-
-const ingredImage =
-  "https://www.thecocktaildb.com/images/ingredients/Schweppes%20Russchian-Small.png"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 
 const CocktailDetail = () => {
   const drink = useAppSelector((state: RootState) => state.selectedCocktail)
@@ -42,7 +43,7 @@ const CocktailDetail = () => {
         {/* 재료 */}
         <Box alignItems="start" mt={6}>
           <Typography fontFamily="NanumSquareNeoHeavy">재료</Typography>
-          <Paper elevation={1}>
+          <Paper elevation={3}>
             <Box
               display="flex"
               flexDirection="column"
@@ -82,7 +83,7 @@ const CocktailDetail = () => {
         {/* 레시피 */}
         <Box mt={4}>
           <Typography fontFamily="NanumSquareNeoHeavy">레시피</Typography>
-          <Paper elevation={1}>
+          <Paper elevation={3}>
             <Box p={2} pt={4} pb={4} mt={1}>
               {drink.strInstructions.split(/[.!]/).slice(0, -1) ? (
                 drink.strInstructions

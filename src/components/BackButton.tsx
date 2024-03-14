@@ -6,7 +6,7 @@ const BackButton = () => {
   return (
     <ArrowBackIosNew
       onClick={() => navigate(-1)}
-      sx={{ position: "fixed", top: 10, left: 10 }}
+      sx={{ position: "absolute", top: 10, left: 10 }}
     />
   )
 }

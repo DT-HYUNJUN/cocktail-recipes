@@ -1,11 +1,20 @@
-import React from "react"
-import { Box, Grid, Paper, Typography, styled } from "@mui/material"
+import {
+  Box,
+  CardActionArea,
+  Grid,
+  Paper,
+  Typography,
+  styled,
+} from "@mui/material"
 import Rum from "../assets/images/rum.png"
 import Gin from "../assets/images/gin.png"
 import Vodka from "../assets/images/vodka.png"
 import Whiskey from "../assets/images/whiskey.png"
 import Tequila from "../assets/images/tequila.png"
 import { useNavigate } from "react-router-dom"
+import { getByIngredient } from "../features/cocktail/cocktailAPI"
+import { useAppDispatch } from "../app/hooks"
+import { setCocktailList } from "../features/cocktail/cocktailSlice"
 
 const base = [
   { id: 0, value: "Rum", ingredient: "럼", image: Rum },
@@ -17,8 +26,14 @@ const base = [
 
 const BaseIngredient = () => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   const handleClickBaseIngred = (value: string) => {
+    const fetchByIngredient = async () => {
+      const drinks = await getByIngredient(value)
+      dispatch(setCocktailList(drinks))
+    }
+    fetchByIngredient()
     navigate(`/${value}`)
   }
 
@@ -36,14 +51,19 @@ const BaseIngredient = () => {
             item
             xs={6}
           >
-            <Paper sx={{ padding: 2 }}>
-              <Box display="flex" alignItems="center">
-                <IngredImage src={item.image} alt="ingred" />
-                <Typography fontFamily="NanumSquareNeoBold" textAlign="center">
-                  {item.ingredient}
-                </Typography>
-              </Box>
-            </Paper>
+            <CardActionArea>
+              <Paper elevation={3} sx={{ padding: 2 }}>
+                <Box display="flex" alignItems="center">
+                  <IngredImage src={item.image} alt="ingred" />
+                  <Typography
+                    fontFamily="NanumSquareNeoBold"
+                    textAlign="center"
+                  >
+                    {item.ingredient}
+                  </Typography>
+                </Box>
+              </Paper>
+            </CardActionArea>
           </Grid>
         ))}
       </Grid>
