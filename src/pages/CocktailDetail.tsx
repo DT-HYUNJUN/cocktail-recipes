@@ -1,7 +1,4 @@
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
   Box,
   Button,
   Container,
@@ -11,9 +8,8 @@ import {
 } from "@mui/material"
 import { useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
-import BackButton from "../components/BackButton"
 import { useEffect } from "react"
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import HeadText from "../components/global/HeadText"
 
 const CocktailDetail = () => {
   const drink = useAppSelector((state: RootState) => state.selectedCocktail)
@@ -25,15 +21,26 @@ const CocktailDetail = () => {
   return (
     drink && (
       <Container>
-        <BackButton />
-        <Box display="flex" flexDirection="column" alignItems="center" pt={10}>
+        <Box display="flex" flexDirection="column" alignItems="center">
           <DrinkImage src={drink.strDrinkThumb} />
           <Box display="flex" gap={1} mb={2}>
-            <Button variant="contained" size="small">
-              <Typography variant="caption">#{drink.strAlcoholic}</Typography>
+            <Button
+              sx={{ borderRadius: "5px" }}
+              variant="contained"
+              size="small"
+            >
+              <Typography sx={{ color: "white" }} variant="caption">
+                #{drink.strAlcoholic}
+              </Typography>
             </Button>
-            <Button variant="contained" size="small">
-              <Typography variant="caption">#{drink.strGlass}</Typography>
+            <Button
+              sx={{ borderRadius: "5px" }}
+              variant="contained"
+              size="small"
+            >
+              <Typography sx={{ color: "white" }} variant="caption">
+                #{drink.strGlass}
+              </Typography>
             </Button>
           </Box>
           <Typography fontFamily="NanumSquareNeoHeavy" variant="h4">
@@ -41,8 +48,8 @@ const CocktailDetail = () => {
           </Typography>
         </Box>
         {/* 재료 */}
-        <Box alignItems="start" mt={6}>
-          <Typography fontFamily="NanumSquareNeoHeavy">재료</Typography>
+        <Box alignItems="start" mt={3}>
+          <HeadText text={"재료"} />
           <Paper elevation={3}>
             <Box
               display="flex"
@@ -82,10 +89,10 @@ const CocktailDetail = () => {
         </Box>
         {/* 레시피 */}
         <Box mt={4}>
-          <Typography fontFamily="NanumSquareNeoHeavy">레시피</Typography>
+          <HeadText text={"레시피"} />
           <Paper elevation={3}>
             <Box p={2} pt={4} pb={4} mt={1}>
-              {drink.strInstructions.split(/[.!]/).slice(0, -1) ? (
+              {drink.strInstructions ? (
                 drink.strInstructions
                   .split(/[.!]/)
                   .slice(0, -1)

@@ -9,26 +9,22 @@ const Menu = (props: Props) => {
   return (
     <Box display="flex" justifyContent="center" gap={2} width={345}>
       <Button
-        onClick={() => props.handleClickMenu("all")}
-        variant={props.value === "all" ? "contained" : "outlined"}
-        fullWidth
-        size="small"
-      >
-        전체
-      </Button>
-      <Button
         onClick={() => props.handleClickMenu("cocktail")}
-        variant={props.value === "cocktail" ? "contained" : "outlined"}
+        variant="contained"
         fullWidth
         size="small"
+        color={props.value === "cocktail" ? "primary" : "secondary"}
+        sx={{ color: props.value === "cocktail" ? "white" : "black" }}
       >
         칵테일
       </Button>
       <Button
         onClick={() => props.handleClickMenu("ingredient")}
-        variant={props.value === "ingredient" ? "contained" : "outlined"}
+        variant="contained"
         fullWidth
         size="small"
+        color={props.value === "ingredient" ? "primary" : "secondary"}
+        sx={{ color: props.value === "ingredient" ? "white" : "black" }}
       >
         재료
       </Button>

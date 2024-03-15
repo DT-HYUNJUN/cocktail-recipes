@@ -5,10 +5,22 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import DrinkDetail from "./pages/CocktailDetail"
 import BaseIngredDrinks from "./pages/BaseIngredCocktails"
 import CocktailSearch from "./pages/CocktailSearch"
+import Navbar from "./components/global/Navbar"
 
 const theme = createTheme({
   typography: {
     fontFamily: "NanumSquareNeo, NanumSquareNeoBold",
+  },
+  palette: {
+    primary: {
+      main: "#00CED1",
+    },
+    secondary: {
+      main: "#ffffff",
+    },
+  },
+  shape: {
+    borderRadius: 10,
   },
 })
 
@@ -17,6 +29,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Wrap>
         <BrowserRouter>
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/drink/:idDrink" element={<DrinkDetail />} />
@@ -37,6 +50,6 @@ const Wrap = styled("div")({
   minHeight: "100dvh",
   margin: "0 auto",
   boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-  paddingTop: "40px",
+  paddingTop: "100px",
   paddingBottom: "40px",
 })
