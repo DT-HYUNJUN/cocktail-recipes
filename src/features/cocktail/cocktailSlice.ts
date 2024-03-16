@@ -61,6 +61,9 @@ export interface CocktailSliceState {
   cocktailList: IDrink[]
   ingredientList: IIngredient[]
   selectedIngredient: IIngredient
+  count: number
+  selectedBaseIngred: string
+  isEnd: boolean
   loading: boolean
 }
 
@@ -70,12 +73,17 @@ const initialState: CocktailSliceState = {
   cocktailList: [],
   ingredientList: [],
   selectedIngredient: initialIngredient,
+  count: 0,
+  selectedBaseIngred: "",
+  isEnd: false,
   loading: false,
 }
 
-interface INgred {
+interface IGetByIngredAction {
   list: IDrinkAPI[]
   reset: boolean
+  ingred: string
+  isEnd: boolean
 }
 
 export const cocktailSlice = createSlice({
@@ -149,11 +157,12 @@ export const cocktailSlice = createSlice({
       })
       .addCase(
         getByIngredient.fulfilled,
-        (state, action: PayloadAction<INgred>) => {
+        (state, action: PayloadAction<IGetByIngredAction>) => {
+          const tempList: IDrink[] = []
           if (action.payload.reset) {
             state.cocktailList = []
+            state.count = 0
           }
-          const tempList: IDrink[] = []
           action.payload.list.forEach(drink => {
             const temp = {
               idDrink: drink.idDrink,
@@ -182,8 +191,11 @@ export const cocktailSlice = createSlice({
             }
             tempList.push(temp)
           })
-          state.cocktailList = [...state.cocktailList, ...tempList]
+          state.cocktailList = [...state.cocktailList].concat(tempList)
+          state.count += 10
           state.loading = false
+          state.selectedBaseIngred = action.payload.ingred
+          state.isEnd = action.payload.isEnd
         },
       )
       .addCase(getByName.pending, state => {
@@ -273,17 +285,15 @@ export const getById = createAsyncThunk(
 // 재료로 칵테일 검색
 export const getByIngredient = createAsyncThunk(
   "cocktail/getByIngredient",
-  async (data: { ingred: string; startNum: number }) => {
-    const { ingred, startNum } = data
+  async (data: { ingred: string; count: number; reset: boolean }) => {
+    const { ingred, count, reset } = data
     try {
       const res = await fetch(`${baseUrl}/filter.php?i=${ingred}`)
       const data = await res.json()
-      if (startNum === 10)
-        return { list: data.drinks.slice(0, 10), reset: true }
-      return { list: data.drinks.slice(startNum, startNum + 10), reset: false }
+      const list = data.drinks.slice(count, count + 10)
+      return { list, reset, ingred, isEnd: list.length < 10 ? true : false }
     } catch (error) {
       console.log(error)
-
       throw error
     }
   },

@@ -13,11 +13,7 @@ import Whiskey from "../../assets/images/whiskey.png"
 import Tequila from "../../assets/images/tequila.png"
 import Brandy from "../../assets/images/brandy.png"
 import { useNavigate } from "react-router-dom"
-
-import { useAppDispatch } from "../../app/hooks"
-
 import HeadText from "../global/HeadText"
-import { getByIngredient } from "../../features/cocktail/cocktailSlice"
 
 export const baseIngredientList = [
   { id: 0, value: "Rum", ingredient: "럼", image: Rum },
@@ -30,15 +26,19 @@ export const baseIngredientList = [
 
 const BaseIngredient = () => {
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
 
   const handleClickBaseIngred = (value: string) => {
-    dispatch(getByIngredient({ ingred: value, startNum: 0 }))
     navigate(`/${value}`)
   }
 
   return (
-    <Box sx={{ flexGrow: 1, width: 345 }} mt={4}>
+    <Box
+      sx={{ flexGrow: 1, width: 345 }}
+      mt={4}
+      display="flex"
+      flexDirection="column"
+      gap={1}
+    >
       <HeadText text={"베이스 스피릿"} />
       <Grid container spacing={2}>
         {baseIngredientList.map(ingred => (
