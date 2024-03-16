@@ -73,6 +73,11 @@ const initialState: CocktailSliceState = {
   loading: false,
 }
 
+interface INgred {
+  list: IDrinkAPI[]
+  reset: boolean
+}
+
 export const cocktailSlice = createSlice({
   name: "cocktail",
   initialState,
@@ -144,9 +149,12 @@ export const cocktailSlice = createSlice({
       })
       .addCase(
         getByIngredient.fulfilled,
-        (state, action: PayloadAction<IDrinkAPI[]>) => {
-          let id = 0
-          action.payload.forEach(drink => {
+        (state, action: PayloadAction<INgred>) => {
+          if (action.payload.reset) {
+            state.cocktailList = []
+          }
+          const tempList: IDrink[] = []
+          action.payload.list.forEach(drink => {
             const temp = {
               idDrink: drink.idDrink,
               strDrink: drink.strDrink,
@@ -172,9 +180,9 @@ export const cocktailSlice = createSlice({
                 temp.measures.push({ id: i - 1, strMeasure: measureValue })
               }
             }
-            state.cocktailList[id] = temp
-            id += 1
+            tempList.push(temp)
           })
+          state.cocktailList = [...state.cocktailList, ...tempList]
           state.loading = false
         },
       )
@@ -262,14 +270,17 @@ export const getById = createAsyncThunk(
   },
 )
 
-// 재료로 검색
+// 재료로 칵테일 검색
 export const getByIngredient = createAsyncThunk(
   "cocktail/getByIngredient",
-  async (ingred: string) => {
+  async (data: { ingred: string; startNum: number }) => {
+    const { ingred, startNum } = data
     try {
       const res = await fetch(`${baseUrl}/filter.php?i=${ingred}`)
       const data = await res.json()
-      return data.drinks.slice(0, 10)
+      if (startNum === 10)
+        return { list: data.drinks.slice(0, 10), reset: true }
+      return { list: data.drinks.slice(startNum, startNum + 10), reset: false }
     } catch (error) {
       console.log(error)
 

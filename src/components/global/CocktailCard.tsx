@@ -29,29 +29,28 @@ const CocktailCard = (props: Props) => {
   }
 
   return (
-    props.drink && (
-      <div onClick={handleClickDrink}>
-        <Card sx={{ width: 345 }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="200"
-              image={props.drink.strDrinkThumb}
-              alt="preview"
-            />
-          </CardActionArea>
-        </Card>
-        <Typography
-          fontFamily="NanumSquareNeoBold"
-          gutterBottom
-          variant="subtitle1"
-          m={0}
-          sx={{ boxSizing: "border-box" }}
-        >
-          {props.drink.strDrink}
-        </Typography>
-      </div>
-    )
+    <div onClick={handleClickDrink}>
+      <Card sx={{ width: 345 }}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            height="200"
+            image={props.drink.strDrinkThumb}
+            alt="preview"
+            loading="lazy"
+          />
+        </CardActionArea>
+      </Card>
+      <Typography
+        fontFamily="NanumSquareNeoBold"
+        gutterBottom
+        variant="subtitle1"
+        m={0}
+        sx={{ boxSizing: "border-box" }}
+      >
+        {props.drink.strDrink}
+      </Typography>
+    </div>
   )
 }
 

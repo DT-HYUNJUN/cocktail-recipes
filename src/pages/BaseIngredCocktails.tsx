@@ -1,27 +1,38 @@
 import CocktailCard from "../components/global/CocktailCard"
 import { Box, Container, styled } from "@mui/material"
-import { useAppSelector } from "../app/hooks"
+import { useAppDispatch, useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
 import { baseIngredientList } from "../components/home/BaseIngredient"
 import { useParams } from "react-router-dom"
-
 import HeadText from "../components/global/HeadText"
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import LoadingCard from "../components/global/LoadingCard"
+import { useInView } from "react-intersection-observer"
+import { getByIngredient } from "../features/cocktail/cocktailSlice"
 
 const BaseIngredCocktails = () => {
+  const [ref, inView] = useInView()
+
   const drinkList = useAppSelector((state: RootState) => state.cocktailList)
   const loading = useAppSelector((state: RootState) => state.loading)
 
   const { ingred } = useParams() as { ingred: string }
+
+  const dispatch = useAppDispatch()
+
+  const startNumRef = useRef(10)
 
   const targetIngred = baseIngredientList.find(
     ingerd => ingerd.value === ingred,
   )!
 
   useEffect(() => {
-    console.log(drinkList)
-  }, [drinkList])
+    if (inView) {
+      console.log(`inView checked, startNum: ${startNumRef.current}`)
+      dispatch(getByIngredient({ ingred, startNum: startNumRef.current }))
+      startNumRef.current += 10
+    }
+  }, [inView])
 
   return (
     drinkList && (
@@ -37,15 +48,20 @@ const BaseIngredCocktails = () => {
             alignItems="center"
             gap={4}
           >
-            {loading ? (
-              <LoadingCard />
-            ) : (
-              drinkList.map(drink => (
-                <CocktailCard key={drink.idDrink} drink={drink} />
-              ))
-            )}
+            {loading
+              ? [0, 1, 3].map(item => (
+                  <div key={item}>
+                    <LoadingCard />
+                    <LoadingCard />
+                    <LoadingCard />
+                  </div>
+                ))
+              : drinkList.map(drink => (
+                  <CocktailCard key={drink.idDrink} drink={drink} />
+                ))}
           </Box>
         </Box>
+        <div ref={ref} />
       </Container>
     )
   )

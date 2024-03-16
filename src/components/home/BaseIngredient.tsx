@@ -33,7 +33,7 @@ const BaseIngredient = () => {
   const dispatch = useAppDispatch()
 
   const handleClickBaseIngred = (value: string) => {
-    dispatch(getByIngredient(value))
+    dispatch(getByIngredient({ ingred: value, startNum: 0 }))
     navigate(`/${value}`)
   }
 

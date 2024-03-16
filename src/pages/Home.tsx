@@ -4,8 +4,8 @@ import RecipeCard from "../components/global/CocktailCard"
 import { getRandomCocktail } from "../features/cocktail/cocktailSlice"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
-import BaseIngredient from "../components/home/BaseIngredient"
 import LoadingCard from "../components/global/LoadingCard"
+import BaseIngredient from "../components/home/BaseIngredient"
 
 const Home = () => {
   const dispatch = useAppDispatch()
