@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom"
-import { Box, IconButton, styled } from "@mui/material"
+import { Box, styled } from "@mui/material"
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
-import SearchIcon from "@mui/icons-material/Search"
 import { useState } from "react"
+import SearchBar from "./SearchBar"
 
 const Navbar = () => {
   const [searchInput, setSearchInput] = useState("")
@@ -24,19 +24,16 @@ const Navbar = () => {
 
   return (
     <NavBox>
-      <IconButton onClick={handleClickHome}>
+      <Box onClick={handleClickHome} p={1}>
         <HomeOutlinedIcon fontSize="large" color="primary" />
-      </IconButton>
+      </Box>
       <Box component="div" display="flex" justifyContent="center" flexGrow={1}>
-        <SearchForm onSubmit={handleSubmitSearch}>
-          <SearchIcon sx={{ color: "grey" }} fontSize="small" />
-          <SearchInput
-            value={searchInput}
-            onChange={handleInputSearch}
-            type="text"
-            placeholder="칵테일 또는 재료를 검색해보세요."
-          />
-        </SearchForm>
+        <SearchBar
+          inputValue={searchInput}
+          handleInputSearch={handleInputSearch}
+          handleSubmitSearch={handleSubmitSearch}
+          placeholder="칵테일 또는 재료를 검색해보세요."
+        />
       </Box>
     </NavBox>
   )
@@ -45,12 +42,14 @@ const Navbar = () => {
 export default Navbar
 
 const NavBox = styled(Box)({
-  width: "425px",
+  width: "430px",
   boxSizing: "border-box",
   position: "fixed",
   backgroundColor: "white",
   top: 0,
   left: 0,
+  right: 0,
+  margin: "0 auto",
   zIndex: 100,
   display: "flex",
   alignItems: "center",

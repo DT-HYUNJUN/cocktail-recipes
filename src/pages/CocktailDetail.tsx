@@ -9,7 +9,7 @@ import {
 import { useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
 import { useEffect } from "react"
-import HeadText from "../components/global/HeadText"
+import HeadText from "../components/Common/HeadText"
 
 const CocktailDetail = () => {
   const drink = useAppSelector((state: RootState) => state.selectedCocktail)

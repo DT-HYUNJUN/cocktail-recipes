@@ -5,6 +5,7 @@ import { store } from "./app/store"
 import "./index.css"
 import { persistStore } from "redux-persist"
 import { PersistGate } from "redux-persist/integration/react"
+import "./locales/i18n"
 
 const container = document.getElementById("root")
 

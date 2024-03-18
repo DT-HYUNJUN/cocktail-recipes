@@ -6,9 +6,9 @@ import {
   getByName,
   getIngredientByName,
 } from "../features/cocktail/cocktailSlice"
-import Menu from "../components/cocktailSearch/Menu"
-import Cocktail from "../components/cocktailSearch/Cocktail"
-import Ingredient from "../components/cocktailSearch/Ingredient"
+import Menu from "../components/Common/MenuBar"
+import Cocktail from "../components/CocktailSearch/Cocktail"
+import Ingredient from "../components/CocktailSearch/Ingredient"
 
 const CocktailSearch = () => {
   const [value, setValue] = useState("cocktail")
@@ -28,7 +28,12 @@ const CocktailSearch = () => {
   return (
     <Container>
       <Box display="flex" justifyContent="center">
-        <Menu value={value} handleClickMenu={handleClickMenu} />
+        <Menu
+          value={value}
+          handleClickMenu={handleClickMenu}
+          textOne={{ name: "cocktail", value: "칵테일" }}
+          textTwo={{ name: "ingredient", value: "재료" }}
+        />
       </Box>
       {value === "cocktail" ? <Cocktail /> : <Ingredient />}
     </Container>

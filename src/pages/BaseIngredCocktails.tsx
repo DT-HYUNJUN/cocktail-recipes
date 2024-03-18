@@ -1,57 +1,78 @@
-import CocktailCard from "../components/global/CocktailCard"
-import { Box, Container, Typography, styled } from "@mui/material"
+import CocktailCard from "../components/Common/CocktailCard"
+import { Box, Container, styled } from "@mui/material"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
-import { baseIngredientList } from "../components/home/BaseIngredient"
 import { useParams } from "react-router-dom"
-import HeadText from "../components/global/HeadText"
+import HeadText from "../components/Common/HeadText"
 import { useEffect } from "react"
-import LoadingCard from "../components/global/LoadingCard"
+import LoadingCard from "../components/Common/LoadingCard"
 import { useInView } from "react-intersection-observer"
-import { getByIngredient } from "../features/cocktail/cocktailSlice"
+import { getByFilter } from "../features/cocktail/cocktailSlice"
+import { filterData } from "../assets/data/filterData"
 
 const BaseIngredCocktails = () => {
   const [ref, inView] = useInView()
 
-  const { ingred } = useParams() as { ingred: string }
+  const { filter, pathFilterValue } = useParams() as {
+    filter: "c" | "g" | "i" | "a"
+    pathFilterValue: string
+  }
 
   const drinkList = useAppSelector((state: RootState) => state.cocktailList)
   const loading = useAppSelector((state: RootState) => state.loading)
   const count = useAppSelector((state: RootState) => state.count)
-  const selectedBaseIngred = useAppSelector(
-    (state: RootState) => state.selectedBaseIngred,
+  const selectedFilterValue = useAppSelector(
+    (state: RootState) => state.selectedFilterValue,
+  )
+  const selectedFilter = useAppSelector(
+    (state: RootState) => state.selectedFilter,
   )
   const isEnd = useAppSelector((state: RootState) => state.isEnd)
 
   const dispatch = useAppDispatch()
 
-  const targetIngred = baseIngredientList.find(
-    ingerd => ingerd.value === ingred,
+  const targetFilterValue = filterData[selectedFilter].find(
+    item => item.value === pathFilterValue,
   )!
 
   useEffect(() => {
-    if (selectedBaseIngred !== ingred) {
+    if (selectedFilterValue !== pathFilterValue) {
       console.log("첫 로딩")
-      dispatch(getByIngredient({ ingred, count: 0, reset: true }))
+      dispatch(
+        getByFilter({
+          filterValue: pathFilterValue,
+          count: 0,
+          reset: true,
+          filter,
+        }),
+      )
     }
   }, [])
 
   useEffect(() => {
     if (count !== 0 && !isEnd && inView) {
       console.log(`inView checked, count: ${count}`)
-      dispatch(getByIngredient({ ingred, count, reset: false }))
+      dispatch(
+        getByFilter({
+          filterValue: pathFilterValue,
+          count,
+          reset: false,
+          filter,
+        }),
+      )
     }
   }, [inView])
 
   return (
-    drinkList && (
+    drinkList &&
+    targetFilterValue && (
       <Container>
         <Box display="flex" flexDirection="column" gap={2}>
           <Box display="flex" alignItems="center" pl={3} gap={2}>
-            <IngredImage src={targetIngred.image} alt="ingred" />
+            <IngredImage src={targetFilterValue.image} alt="image" />
             <HeadText
               variant="h6"
-              text={`${targetIngred.ingredient} 베이스 칵테일`}
+              text={`${targetFilterValue.filterValue} 베이스 칵테일`}
             />
           </Box>
           <Box

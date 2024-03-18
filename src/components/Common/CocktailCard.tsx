@@ -25,7 +25,7 @@ const CocktailCard = (props: Props) => {
     } else {
       fetchById(props.drink.idDrink)
     }
-    navigate(`/drink/${props.drink.idDrink}`)
+    navigate(`/cocktail/detail/${props.drink.idDrink}`)
   }
 
   return (

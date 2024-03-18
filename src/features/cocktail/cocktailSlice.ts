@@ -61,8 +61,10 @@ export interface CocktailSliceState {
   cocktailList: IDrink[]
   ingredientList: IIngredient[]
   selectedIngredient: IIngredient
+  myBar: string[]
   count: number
-  selectedBaseIngred: string
+  selectedFilterValue: string
+  selectedFilter: "c" | "g" | "i" | "a"
   isEnd: boolean
   loading: boolean
 }
@@ -73,16 +75,19 @@ const initialState: CocktailSliceState = {
   cocktailList: [],
   ingredientList: [],
   selectedIngredient: initialIngredient,
+  myBar: [],
   count: 0,
-  selectedBaseIngred: "",
+  selectedFilterValue: "",
+  selectedFilter: "c",
   isEnd: false,
   loading: false,
 }
 
-interface IGetByIngredAction {
+interface IGetByFilterAction {
   list: IDrinkAPI[]
   reset: boolean
-  ingred: string
+  filterValue: string
+  filter: "c" | "g" | "i" | "a"
   isEnd: boolean
 }
 
@@ -118,6 +123,13 @@ export const cocktailSlice = createSlice({
       state.selectedIngredient = action.payload
       state.loading = false
     },
+    addToMyBar(state, action: PayloadAction<{ strIngredient: string }>) {
+      state.myBar.includes(action.payload.strIngredient)
+        ? (state.myBar = state.myBar.filter(
+            myIngred => myIngred !== action.payload.strIngredient,
+          ))
+        : state.myBar.push(action.payload.strIngredient)
+    },
   },
   extraReducers: builder => {
     builder
@@ -152,12 +164,12 @@ export const cocktailSlice = createSlice({
           state.loading = false
         },
       )
-      .addCase(getByIngredient.pending, state => {
+      .addCase(getByFilter.pending, state => {
         state.loading = true
       })
       .addCase(
-        getByIngredient.fulfilled,
-        (state, action: PayloadAction<IGetByIngredAction>) => {
+        getByFilter.fulfilled,
+        (state, action: PayloadAction<IGetByFilterAction>) => {
           const tempList: IDrink[] = []
           if (action.payload.reset) {
             state.cocktailList = []
@@ -194,8 +206,9 @@ export const cocktailSlice = createSlice({
           state.cocktailList = [...state.cocktailList].concat(tempList)
           state.count += 10
           state.loading = false
-          state.selectedBaseIngred = action.payload.ingred
+          state.selectedFilterValue = action.payload.filterValue
           state.isEnd = action.payload.isEnd
+          state.selectedFilter = action.payload.filter
         },
       )
       .addCase(getByName.pending, state => {
@@ -282,16 +295,27 @@ export const getById = createAsyncThunk(
   },
 )
 
-// 재료로 칵테일 검색
-export const getByIngredient = createAsyncThunk(
-  "cocktail/getByIngredient",
-  async (data: { ingred: string; count: number; reset: boolean }) => {
-    const { ingred, count, reset } = data
+// 필터로 칵테일 검색
+export const getByFilter = createAsyncThunk(
+  "cocktail/getByFilter",
+  async (data: {
+    filter: "c" | "g" | "i" | "a"
+    filterValue: string
+    count: number
+    reset: boolean
+  }) => {
+    const { filter, filterValue, count, reset } = data
     try {
-      const res = await fetch(`${baseUrl}/filter.php?i=${ingred}`)
+      const res = await fetch(`${baseUrl}/filter.php?${filter}=${filterValue}`)
       const data = await res.json()
       const list = data.drinks.slice(count, count + 10)
-      return { list, reset, ingred, isEnd: list.length < 10 ? true : false }
+      return {
+        list,
+        reset,
+        filterValue,
+        filter,
+        isEnd: list.length < 10 ? true : false,
+      }
     } catch (error) {
       console.log(error)
       throw error
@@ -337,7 +361,7 @@ export const getIngredientByName = createAsyncThunk(
   },
 )
 
-export const { setSelectedCockatil, setSelectedIngredient } =
+export const { setSelectedCockatil, setSelectedIngredient, addToMyBar } =
   cocktailSlice.actions
 
 export default cocktailSlice.reducer

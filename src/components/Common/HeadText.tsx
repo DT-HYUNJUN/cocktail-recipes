@@ -14,6 +14,7 @@ interface Props {
     | "subtitle2"
     | "body1"
     | "body2"
+  gutterBottom?: boolean
 }
 
 const HeadText = (props: Props) => {
@@ -23,6 +24,7 @@ const HeadText = (props: Props) => {
       fontFamily="NanumSquareNeoHeavy"
       pl={props.padding}
       variant={props.variant}
+      gutterBottom={props.gutterBottom}
     >
       {props.text}
     </Typography>

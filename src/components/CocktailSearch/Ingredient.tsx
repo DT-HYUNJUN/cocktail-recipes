@@ -1,7 +1,7 @@
 import type { RootState } from "../../app/store"
 import { useAppSelector } from "../../app/hooks"
 import { Box, Typography } from "@mui/material"
-import IngredientCard from "./IngredientCard"
+import IngredientCard from "../CocktailSearch/IngredientCard"
 
 const Ingredient = () => {
   const ingredientList = useAppSelector(

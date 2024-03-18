@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material"
-import CocktailCard from "../global/CocktailCard"
+import CocktailCard from "../Common/CocktailCard"
 import { useAppSelector } from "../../app/hooks"
 import type { RootState } from "../../app/store"
 

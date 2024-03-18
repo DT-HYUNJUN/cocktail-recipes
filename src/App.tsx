@@ -5,7 +5,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import DrinkDetail from "./pages/CocktailDetail"
 import BaseIngredDrinks from "./pages/BaseIngredCocktails"
 import CocktailSearch from "./pages/CocktailSearch"
-import Navbar from "./components/global/Navbar"
+import Navbar from "./components/Common/Navbar"
+import BottomNavbar from "./components/Common/BottomNavbar"
+import MyBar from "./pages/MyBar"
+import Cocktail from "./pages/Cocktail"
+import Ingredient from "./pages/Ingredient"
 
 const theme = createTheme({
   typography: {
@@ -32,10 +36,17 @@ const App = () => {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/drink/:idDrink" element={<DrinkDetail />} />
-            <Route path="/:ingred" element={<BaseIngredDrinks />} />
+            <Route path="/cocktail" element={<Cocktail />} />
+            <Route path="/ingredient" element={<Ingredient />} />
+            <Route path="/cocktail/detail/:idDrink" element={<DrinkDetail />} />
+            <Route
+              path="/cocktail/:filter/:pathFilterValue"
+              element={<BaseIngredDrinks />}
+            />
             <Route path="/search/:name" element={<CocktailSearch />} />
+            <Route path="/mybar" element={<MyBar />} />
           </Routes>
+          <BottomNavbar />
         </BrowserRouter>
       </Wrap>
     </ThemeProvider>
@@ -51,5 +62,5 @@ const Wrap = styled("div")({
   margin: "0 auto",
   boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
   paddingTop: "100px",
-  paddingBottom: "40px",
+  paddingBottom: "100px",
 })
