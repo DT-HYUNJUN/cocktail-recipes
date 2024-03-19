@@ -11,10 +11,13 @@ import Cocktail from "../components/CocktailSearch/Cocktail"
 import Ingredient from "../components/CocktailSearch/Ingredient"
 
 const CocktailSearch = () => {
-  const [value, setValue] = useState("cocktail")
+  const [isClickedCocktail, setIsClickedCocktail] = useState(true)
 
-  const handleClickMenu = (value: string) => {
-    setValue(value)
+  const handleClickCocktail = () => {
+    setIsClickedCocktail(true)
+  }
+  const handleClickIngredient = () => {
+    setIsClickedCocktail(false)
   }
 
   const { name } = useParams() as { name: string }
@@ -29,13 +32,13 @@ const CocktailSearch = () => {
     <Container>
       <Box display="flex" justifyContent="center">
         <Menu
-          value={value}
-          handleClickMenu={handleClickMenu}
-          textOne={{ name: "cocktail", value: "칵테일" }}
-          textTwo={{ name: "ingredient", value: "재료" }}
+          value={isClickedCocktail}
+          handleClickOne={handleClickCocktail}
+          handleClickTwo={handleClickIngredient}
+          text={{ one: "칵테일", two: "재료" }}
         />
       </Box>
-      {value === "cocktail" ? <Cocktail /> : <Ingredient />}
+      {isClickedCocktail ? <Cocktail /> : <Ingredient />}
     </Container>
   )
 }

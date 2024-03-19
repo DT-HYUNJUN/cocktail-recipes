@@ -42,7 +42,7 @@ const Navbar = () => {
 export default Navbar
 
 const NavBox = styled(Box)({
-  width: "430px",
+  minWidth: "375px",
   boxSizing: "border-box",
   position: "fixed",
   backgroundColor: "white",
@@ -54,24 +54,6 @@ const NavBox = styled(Box)({
   display: "flex",
   alignItems: "center",
   padding: "4px",
-  boxShadow: "rgba(0, 0, 0, 0.2) 0px -2px 6px",
+  boxShadow: "rgba(0, 0, 0, 0.2) 0px 2px 6px",
   marginBottom: "40px",
-})
-
-const SearchForm = styled("form")({
-  width: "calc(100% - 30px)",
-  display: "flex",
-  gap: "10px",
-  alignItems: "center",
-  backgroundColor: "#f5f5f5",
-  borderRadius: "10px",
-  padding: 10,
-})
-
-const SearchInput = styled("input")({
-  background: "none",
-  border: 0,
-  outline: "none",
-  fontWeight: "bold",
-  width: "100%",
 })

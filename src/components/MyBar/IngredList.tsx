@@ -40,11 +40,14 @@ const IngredList = () => {
 
   useEffect(() => {
     setArr(
-      inputValue
+      (inputValue
         ? ingredientData.filter(ingred =>
             t(ingred.strIngredient).includes(t(inputValue)),
           )
-        : ingredientData,
+        : ingredientData
+      ).sort((a, b) =>
+        t(a.strIngredient).localeCompare(t(b.strIngredient), "ko-KR"),
+      ),
     )
   }, [inputValue])
 
@@ -64,7 +67,17 @@ const IngredList = () => {
               <CardActionArea
                 onClick={() => handleClickIngred(ingred.strIngredient)}
               >
-                <Paper elevation={3} sx={{ padding: 2 }}>
+                <Paper
+                  elevation={3}
+                  sx={{
+                    padding: 2,
+                    bgcolor: myBar.find(
+                      myIngred => myIngred === ingred.strIngredient,
+                    )
+                      ? "#d9f1ff"
+                      : "white",
+                  }}
+                >
                   <Box
                     display="flex"
                     flexDirection="column"

@@ -1,39 +1,39 @@
 import { Box, Button } from "@mui/material"
 
 interface IText {
-  name: string
-  value: string
+  one: string
+  two: string
 }
 
 interface Props {
-  value: string
-  textOne: IText
-  textTwo: IText
-  handleClickMenu: (value: string) => void
+  value: boolean
+  handleClickOne: () => void
+  handleClickTwo: () => void
+  text: IText
 }
 
 const MenuBar = (props: Props) => {
   return (
     <Box display="flex" justifyContent="center" gap={2} width={345}>
       <Button
-        onClick={() => props.handleClickMenu(props.textOne.name)}
+        onClick={props.handleClickOne}
         variant="contained"
         fullWidth
         size="small"
-        color={props.value === props.textOne.name ? "primary" : "secondary"}
-        sx={{ color: props.value === props.textOne.name ? "white" : "black" }}
+        color={props.value ? "primary" : "secondary"}
+        sx={{ color: props.value ? "white" : "black" }}
       >
-        {props.textOne.value}
+        {props.text.one}
       </Button>
       <Button
-        onClick={() => props.handleClickMenu(props.textTwo.name)}
+        onClick={props.handleClickTwo}
         variant="contained"
         fullWidth
         size="small"
-        color={props.value === props.textTwo.name ? "primary" : "secondary"}
-        sx={{ color: props.value === props.textTwo.name ? "white" : "black" }}
+        color={!props.value ? "primary" : "secondary"}
+        sx={{ color: !props.value ? "white" : "black" }}
       >
-        {props.textTwo.value}
+        {props.text.two}
       </Button>
     </Box>
   )

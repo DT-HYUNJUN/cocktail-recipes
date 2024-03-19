@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material"
+import { Box, Typography, styled } from "@mui/material"
 import HomeIcon from "@mui/icons-material/Home"
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
 import LocalBarIcon from "@mui/icons-material/LocalBar"
@@ -26,34 +26,58 @@ const BottomNavbar = () => {
 
   return (
     <Nav>
-      <div onClick={() => handleClickIcon("")}>
+      <PathBox onClick={() => handleClickIcon("")}>
         {pathValue === "/" ? (
           <HomeIcon sx={{ fontSize: "24px" }} color="primary" />
         ) : (
           <HomeOutlinedIcon sx={{ fontSize: "24px" }} />
         )}
-      </div>
-      <div onClick={() => handleClickIcon("cocktail")}>
+        <Typography
+          variant="caption"
+          color={pathValue === "/" ? "primary" : "none"}
+        >
+          홈
+        </Typography>
+      </PathBox>
+      <PathBox onClick={() => handleClickIcon("cocktail")}>
         {pathValue.includes("/cocktail") ? (
           <LocalBarIcon sx={{ fontSize: "24px" }} color="primary" />
         ) : (
           <LocalBarOutlinedIcon sx={{ fontSize: "24px" }} />
         )}
-      </div>
-      <div onClick={() => handleClickIcon("ingredient")}>
-        {pathValue === "/ingredient" ? (
+        <Typography
+          variant="caption"
+          color={pathValue.includes("/cocktail") ? "primary" : "none"}
+        >
+          칵테일
+        </Typography>
+      </PathBox>
+      <PathBox onClick={() => handleClickIcon("ingredient")}>
+        {pathValue.includes("/ingredient") ? (
           <LiquorIcon sx={{ fontSize: "24px" }} color="primary" />
         ) : (
           <LiquorOutlinedIcon sx={{ fontSize: "24px" }} />
         )}
-      </div>
-      <div onClick={() => handleClickIcon("mybar")}>
+        <Typography
+          variant="caption"
+          color={pathValue.includes("/ingredient") ? "primary" : "none"}
+        >
+          재료
+        </Typography>
+      </PathBox>
+      <PathBox onClick={() => handleClickIcon("mybar")}>
         {pathValue === "/mybar" ? (
           <AccountCircleIcon sx={{ fontSize: "24px" }} color="primary" />
         ) : (
           <AccountCircleOutlinedIcon sx={{ fontSize: "24px" }} />
         )}
-      </div>
+        <Typography
+          variant="caption"
+          color={pathValue === "/mybar" ? "primary" : "none"}
+        >
+          마이 바
+        </Typography>
+      </PathBox>
     </Nav>
   )
 }
@@ -61,7 +85,7 @@ const BottomNavbar = () => {
 export default BottomNavbar
 
 const Nav = styled(Box)({
-  width: "430px",
+  minWidth: "375px",
   boxSizing: "border-box",
   position: "fixed",
   backgroundColor: "white",
@@ -73,6 +97,12 @@ const Nav = styled(Box)({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: "20px 40px",
-  boxShadow: "rgba(0, 0, 0, 0.2) 0px -2px 6px",
+  padding: "10px 40px",
+  boxShadow: "rgba(0, 0, 0, 0.2) 0px 2px 6px",
+})
+
+const PathBox = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
 })
