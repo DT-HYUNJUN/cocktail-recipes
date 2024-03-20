@@ -1,102 +1,332 @@
 {
-  "Light rum": "화이트 럼",
-  "Applejack": "애플잭",
-  "Gin": "진",
-  "Dark rum": "다크 럼",
-  "Sweet Vermouth": "스위트 베르무트",
-  "Strawberry schnapps": "딸기 리큐르",
-  "Scotch": "스카치 위스키",
-  "Apricot brandy": "살구 브랜디",
-  "Triple sec": "트리플 섹",
-  "Southern Comfort": "서던 컴포트",
-  "Orange bitters": "오렌지 비터스",
-  "Brandy": "브랜디",
-  "Lemon vodka": "레몬 보드카",
-  "Blended whiskey": "블렌디드 위스키",
-  "Dry Vermouth": "드라이 베르무트",
-  "Amaretto": "아마레토",
-  "Tea": "차",
-  "Champagne": "샴페인",
-  "Coffee liqueur": "커피 리큐르",
-  "Bourbon": "버번 위스키",
-  "Tequila": "데킬라",
-  "Vodka": "보드카",
-  "Añejo rum": "아네호 럼",
-  "Bitters": "비터스",
-  "Sugar": "설탕",
-  "Kahlua": "깔루아",
-  "demerara Sugar": "데메라라 설탕",
-  "Dubonnet Rouge": "뒤보네 루즈",
-  "Watermelon": "수박",
-  "Lime juice": "라임 주스",
-  "Irish whiskey": "아이리쉬 위스키",
-  "Apple brandy": "사과 브랜디",
-  "Carbonated water": "탄산수",
-  "Cherry brandy": "체리 브랜디",
-  "Creme de Cacao": "크렘 드 카카오",
-  "Grenadine": "그레나딘 시럽",
-  "Port": "포트 와인",
-  "Coffee brandy": "커피 브랜디",
-  "Red wine": "레드 와인",
-  "Rum": "럼",
-  "Grapefruit juice": "자몽 주스",
-  "Ricard": "리카르",
-  "Sherry": "셰리 와인",
-  "Cognac": "꼬냑",
-  "Sloe gin": "슬로 진",
-  "Apple juice": "사과 주스",
-  "Pineapple juice": "파인애플 주스",
-  "Lemon juice": "레몬 주스",
-  "Sugar syrup": "설탕 시럽",
-  "Milk": "우유",
-  "Strawberries": "딸기",
-  "Chocolate syrup": "초코 시럽",
-  "Yoghurt": "요거트",
-  "Mango": "망고",
-  "Ginger": "생강",
-  "Lime": "라임",
-  "Cantaloupe": "캔털루프",
-  "Berries": "베리",
-  "Grapes": "포도",
-  "Kiwi": "키위",
-  "Tomato juice": "토마토 주스",
-  "Cocoa powder": "코코아 파우더",
-  "Chocolate": "초콜릿",
-  "Heavy cream": "생크림",
-  "Galliano": "갈리아노",
-  "Peach Vodka": "복숭아 보드카",
-  "Ouzo": "우조",
-  "Coffee": "커피",
-  "Spiced rum": "스파이스드 럼",
-  "Water": "물",
-  "Espresso": "에스프레소",
-  "Angelica root": "일당귀",
-  "Orange": "오렌지",
-  "Cranberries": "크렌베리",
-  "Johnnie Walker": "조니 워커",
-  "Apple cider": "사과 사이다",
-  "Everclear": "에버클리어",
-  "Cranberry juice": "크렌베리 주스",
-  "Egg yolk": "달걀 흰자",
-  "Egg": "달걀",
-  "Grape juice": "포도 주스",
-  "Peach nectar": "복숭아 과일즙",
-  "Lemon": "레몬",
-  "Firewater": "화주",
-  "Lemonade": "레모네이드",
-  "Lager": "라거",
-  "Whiskey": "위스키",
-  "Absolut Citron": "앱솔루트 시트론",
-  "Pisco": "피스코",
-  "Irish cream": "아이리쉬 크림",
-  "Ale": "에일",
-  "Chocolate liqueur": "초콜릿 리큐르",
-  "Midori melon liqueur": "미도리 리큐르",
-  "Sambuca": "삼부카",
-  "Cider": "사이다",
-  "Sprite": "스프라이트",
-  "7-Up": "세븐업",
-  "Blackberry brandy": "블랙베리 브랜디",
-  "Peppermint schnapps": "페퍼민트 리큐르",
-  "Creme de Cassis": "크렘 드 카시스"
+  "ingredients": {
+    "types": {
+      "Liqueur": "리큐르",
+      "Brandy": "브랜디",
+      "Syrup": "시럽",
+      "Rum": "럼",
+      "Spirit": "스피릿",
+      "Liquer": "술",
+      "Fortified Wine": "주정강화 와인",
+      "Fruit": "과일",
+      "Beer": "맥주",
+      "Soft Drink": "청량음료",
+      "Soda": "탄산음료",
+      "Aperitif": "식전주",
+      "Water": "물",
+      "Whiskey": "위스키",
+      "Whisky": "위스키",
+      "Vodka": "보드카",
+      "Cider": "사과주",
+      "Wine": "와인"
+    },
+    "names": {
+      "light rum": "화이트 럼",
+      "applejack": "애플잭",
+      "gin": "진",
+      "dark rum": "다크 럼",
+      "sweet vermouth": "스위트 베르무트",
+      "strawberry schnapps": "딸기 리큐르",
+      "scotch": "스카치 위스키",
+      "apricot brandy": "살구 브랜디",
+      "triple sec": "트리플 섹",
+      "southern comfort": "서던 컴포트",
+      "orange bitters": "오렌지 비터",
+      "brandy": "브랜디",
+      "lemon vodka": "레몬 보드카",
+      "blended whiskey": "블렌디드 위스키",
+      "dry vermouth": "드라이 베르무트",
+      "amaretto": "아마레토",
+      "tea": "차",
+      "champagne": "샴페인",
+      "coffee liqueur": "커피 리큐르",
+      "bourbon": "버번 위스키",
+      "tequila": "데킬라",
+      "vodka": "보드카",
+      "añejo rum": "아네호 럼",
+      "bitters": "비터",
+      "sugar": "설탕",
+      "kahlua": "깔루아",
+      "demerara sugar": "데메라라 설탕",
+      "dubonnet rouge": "뒤보네 루즈",
+      "watermelon": "수박",
+      "lime juice": "라임 주스",
+      "irish whiskey": "아이리쉬 위스키",
+      "apple brandy": "사과 브랜디",
+      "carbonated water": "탄산수",
+      "cherry brandy": "체리 브랜디",
+      "creme de cacao": "크렘 드 카카오",
+      "grenadine": "그레나딘 시럽",
+      "port": "포트 와인",
+      "coffee brandy": "커피 브랜디",
+      "red wine": "레드 와인",
+      "rum": "럼",
+      "grapefruit juice": "자몽 주스",
+      "ricard": "리카르",
+      "sherry": "셰리 와인",
+      "cognac": "꼬냑",
+      "sloe gin": "슬로 진",
+      "apple juice": "사과 주스",
+      "pineapple juice": "파인애플 주스",
+      "lemon juice": "레몬 주스",
+      "sugar syrup": "설탕 시럽",
+      "milk": "우유",
+      "strawberries": "딸기",
+      "chocolate syrup": "초코 시럽",
+      "yoghurt": "요거트",
+      "mango": "망고",
+      "ginger": "생강",
+      "lime": "라임",
+      "cantaloupe": "캔털루프",
+      "berries": "베리",
+      "grapes": "포도",
+      "kiwi": "키위",
+      "tomato juice": "토마토 주스",
+      "cocoa powder": "코코아 파우더",
+      "chocolate": "초콜릿",
+      "heavy cream": "생크림",
+      "galliano": "갈리아노",
+      "peach vodka": "복숭아 보드카",
+      "ouzo": "우조",
+      "coffee": "커피",
+      "spiced rum": "스파이스드 럼",
+      "water": "물",
+      "espresso": "에스프레소",
+      "angelica root": "일당귀",
+      "orange": "오렌지",
+      "cranberries": "크렌베리",
+      "johnnie walker": "조니 워커",
+      "apple cider": "사과주",
+      "everclear": "에버클리어",
+      "cranberry juice": "크렌베리 주스",
+      "egg yolk": "달걀 노른자",
+      "egg": "달걀",
+      "grape juice": "포도 주스",
+      "peach nectar": "복숭아 과일즙",
+      "lemon": "레몬",
+      "firewater": "화주",
+      "lemonade": "레모네이드",
+      "lager": "라거",
+      "whiskey": "위스키",
+      "absolut citron": "앱솔루트 시트론",
+      "pisco": "피스코",
+      "irish cream": "아이리쉬 크림",
+      "ale": "에일",
+      "chocolate liqueur": "초콜릿 리큐르",
+      "midori melon liqueur": "미도리 리큐르",
+      "sambuca": "삼부카",
+      "cider": "사과주",
+      "sprite": "스프라이트",
+      "7-up": "세븐업",
+      "blackberry brandy": "블랙베리 브랜디",
+      "peppermint schnapps": "페퍼민트 리큐르",
+      "creme de cassis": "크렘 드 카시스",
+      "light cream": "저지방 크림",
+      "powdered sugar": "설탕 파우더",
+      "egg white": "달걀 흰자",
+      "mint": "민트",
+      "cinnamon": "시나몬"
+    }
+  },
+  "cocktails": {
+    "3-Mile Long Island Iced Tea": "3마일 롱 아일랜드 티",
+
+    "410 Gone": "410 Gone",
+
+    "50/50": "50/50",
+
+    "501 Blue": "501 블루",
+
+    "69 Special": " 69 스페셜",
+
+    "A Day at the Beach": "해변에서의 하루",
+
+    "A Furlong Too Late": "",
+
+    "A midsummernight dream": "한 여름 밤의 꿈",
+
+    "A Night In Old Mandalay": "올드 만달레이의 밤",
+
+    "A. J.": "A. J",
+
+    "Abbey Cocktail": "수도원 칵테일",
+
+    "Abilene": "애빌린",
+
+    "Absolut Stress #2": "",
+
+    "Absolutely Cranberry Smash": "",
+
+    "Acapulco": "",
+
+    "Adam": "",
+
+    "Adam Sunrise": "",
+
+    "Adonis Cocktail": "",
+
+    "Affair": "",
+
+    "Affinity": "",
+
+    "After Dinner Cocktail": "",
+
+    "After sex": "",
+
+    "After Supper Cocktail": "",
+
+    "Alabama Slammer": "",
+
+    "Alaska Cocktail": "",
+
+    "Alexander": "",
+
+    "Alfie Cocktail": "",
+
+    "Algonquin": "",
+
+    "Alice in Wonderland": "",
+
+    "Allegheny": "",
+
+    "Allies Cocktail": "",
+
+    "Almeria": "",
+
+    "Almond Chocolate Coffee": "",
+
+    "Almond Joy": "",
+
+    "Amaretto And Cream": "",
+
+    "Amaretto Mist": "",
+
+    "Amaretto Rose": "",
+
+    "Amaretto Shake": "",
+
+    "Amaretto Sour": "",
+
+    "Amaretto Stinger": "",
+
+    "Amaretto Sunrise": "",
+
+    "Amaretto Sunset": "",
+
+    "Amaretto Tea": "",
+
+    "Americano": "",
+
+    "Angel Face": "",
+
+    "Applecar": "",
+
+    "Apricot Lady": "",
+
+    "Archbishop": "",
+
+    "Arise My Love": "",
+
+    "Arthur Tompkins": "",
+
+    "Artillery": "",
+
+    "AT&T": "",
+
+    "Atlantic Sun": "",
+
+    "Atomic Lokade": "",
+
+    "Autodafé": "",
+
+    "Avalon": "",
+
+    "Bacardi Cocktail": "",
+
+    "Balmoral": "",
+
+    "Banana Daiquiri": "",
+
+    "Barracuda": "",
+
+    "Bellini": "",
+
+    "Bellini Martini": "",
+
+    "Bermuda Highball": "",
+
+    "Between The Sheets": "",
+
+    "Black Russian": "",
+
+    "Blackthorn": "",
+
+    "Bloody Maria": "",
+
+    "Bloody Mary": "",
+
+    "Blue Lagoon": "",
+
+    "Blue Margarita": "",
+
+    "Blue Mountain": "",
+
+    "Bluebird": "",
+
+    "Bobby Burns Cocktail": "",
+
+    "Boomerang": "",
+
+    "Boston Sidecar": "",
+
+    "Boston Sour": "",
+
+    "Bourbon Sling": "",
+
+    "Bourbon Sour": "",
+
+    "Boxcar": "",
+
+    "Bramble": "",
+
+    "Brandy Alexander": "",
+
+    "Brandy Cobbler": "",
+
+    "Brandy Flip": "",
+
+    "Brandy Sour": "",
+
+    "Caipirinha": "",
+
+    "Caipirissima": "",
+
+    "California Lemonade": "",
+
+    "Casa Blanca": "",
+
+    "Casino": "",
+
+    "Casino Royale": "",
+
+    "Champagne Cocktail": "",
+
+    "Cherry Rum": "",
+
+    "Chicago Fizz": "",
+
+    "Chocolate Black Russian": "",
+
+    "City Slicker": "",
+
+    "Classic Old-Fashioned": "",
+
+    "Clove Cocktail": "",
+
+    "Clover Club": "",
+
+    "Cuba Libra": "",
+
+    "Cuba Libre": ""
+  }
 }

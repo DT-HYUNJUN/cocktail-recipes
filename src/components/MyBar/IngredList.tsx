@@ -9,14 +9,17 @@ import {
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline"
 import HeadText from "../Common/HeadText"
 import { useTranslation } from "react-i18next"
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { useAppSelector } from "../../app/hooks"
 import type { RootState } from "../../app/store"
 import { ingredientData } from "../../assets/data/ingredientData"
-import { addToMyBar } from "../../features/cocktail/cocktailSlice"
 import SearchBar from "../Common/SearchBar"
 import { useEffect, useState } from "react"
 
-const IngredList = () => {
+interface Props {
+  handleClickIngredient: (strIngredient: string) => void
+}
+
+const IngredList = (props: Props) => {
   const [arr, setArr] = useState<{ strIngredient: string }[]>([])
   const [inputValue, setInputValue] = useState("")
 
@@ -28,25 +31,26 @@ const IngredList = () => {
     e.preventDefault()
   }
 
-  const { t } = useTranslation()
-
-  const dispatch = useAppDispatch()
+  const { t } = useTranslation("translation", {
+    keyPrefix: "ingredients",
+  })
 
   const myBar = useAppSelector((state: RootState) => state.myBar)
-
-  const handleClickIngred = (strIngredient: string) => {
-    dispatch(addToMyBar({ strIngredient }))
-  }
 
   useEffect(() => {
     setArr(
       (inputValue
         ? ingredientData.filter(ingred =>
-            t(ingred.strIngredient).includes(t(inputValue)),
+            t(`names.${ingred.strIngredient.toLowerCase()}`).includes(
+              inputValue,
+            ),
           )
         : ingredientData
       ).sort((a, b) =>
-        t(a.strIngredient).localeCompare(t(b.strIngredient), "ko-KR"),
+        t(`names.${a.strIngredient.toLowerCase()}`).localeCompare(
+          t(`names.${b.strIngredient.toLowerCase()}`),
+          "ko-KR",
+        ),
       ),
     )
   }, [inputValue])
@@ -65,7 +69,9 @@ const IngredList = () => {
           {arr.map((ingred, index) => (
             <Grid key={index} item xs={6}>
               <CardActionArea
-                onClick={() => handleClickIngred(ingred.strIngredient)}
+                onClick={() =>
+                  props.handleClickIngredient(ingred.strIngredient)
+                }
               >
                 <Paper
                   elevation={3}
@@ -93,7 +99,7 @@ const IngredList = () => {
                         textAlign="center"
                         variant="body1"
                       >
-                        {t(ingred.strIngredient)}
+                        {t(`names.${ingred.strIngredient.toLowerCase()}`)}
                       </Typography>
                       {myBar.find(
                         myIngred => myIngred === ingred.strIngredient,

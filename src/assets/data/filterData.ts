@@ -13,68 +13,143 @@ import Whiskey from "../images/spirit/whiskey.png"
 import Tequila from "../images/spirit/tequila.png"
 import Brandy from "../images/spirit/brandy.png"
 
-interface IFilterData {
+export interface IFilterList {
   id: number
   value: string
   filterValue: string
   image: string
 }
 
+export interface IFilterData {
+  filterName: string
+  filterList: IFilterList[]
+}
+
 interface IFilter {
-  c: IFilterData[]
-  g: IFilterData[]
-  i: IFilterData[]
-  a: IFilterData[]
+  c: IFilterData
+  g: IFilterData
+  i: IFilterData
+  a: IFilterData
 }
 
 export const filterData: IFilter = {
-  c: [],
-  g: [
-    {
-      id: 0,
-      value: "highball_glass",
-      filterValue: "하이볼",
-      image: Highball,
-    },
-    {
-      id: 1,
-      value: "cocktail_glass",
-      filterValue: "마티니",
-      image: Martini,
-    },
-    {
-      id: 2,
-      value: "old-fashioned_glass",
-      filterValue: "올드패션드 ",
-      image: Old,
-    },
-    {
-      id: 3,
-      value: "collins_glass",
-      filterValue: "콜린스",
-      image: Collins,
-    },
-    {
-      id: 4,
-      value: "hurricane_glass",
-      filterValue: "허리케인",
-      image: Hurricane,
-    },
-    {
-      id: 5,
-      value: "margarita/Coupette_glass",
-      filterValue: "마가리타",
-      image: Margarita,
-    },
-  ],
-  i: [
-    { id: 0, value: "rum", filterValue: "럼", image: Rum },
-    { id: 1, value: "gin", filterValue: "진", image: Gin },
-    { id: 2, value: "vodka", filterValue: "보드카", image: Vodka },
-    { id: 3, value: "scotch", filterValue: "위스키", image: Whiskey },
-    { id: 4, value: "tequila", filterValue: "데킬라", image: Tequila },
-    { id: 5, value: "brandy", filterValue: "브랜디", image: Brandy },
-  ],
-  a: [],
+  c: {
+    filterName: "카테고리",
+    filterList: [
+      {
+        id: 0,
+        value: "ordinary_drink",
+        filterValue: "일반",
+        image: Highball,
+      },
+      {
+        id: 1,
+        value: "cocktail",
+        filterValue: "칵테일",
+        image: Highball,
+      },
+      {
+        id: 2,
+        value: "shake",
+        filterValue: "셰이킹",
+        image: Highball,
+      },
+      {
+        id: 3,
+        value: "shot",
+        filterValue: "샷",
+        image: Highball,
+      },
+      // {
+      //   id: 4,
+      //   value: "coffee / tea",
+      //   filterValue: "커피 / 차",
+      //   image: Highball,
+      // },
+      {
+        id: 5,
+        value: "cocoa",
+        filterValue: "코코아",
+        image: Highball,
+      },
+      // {
+      //   id: 6,
+      //   value: "homemade_liqueur",
+      //   filterValue: "커피 / 차",
+      //   image: Highball,
+      // },
+      // {
+      //   id: 7,
+      //   value: "punch / party drink",
+      //   filterValue: "펀치 / 파티",
+      //   image: Highball,
+      // },
+      {
+        id: 8,
+        value: "beer",
+        filterValue: "맥주",
+        image: Highball,
+      },
+      // {
+      //   id: 9,
+      //   value: "other / unknown",
+      //   filterValue: "기타",
+      //   image: Highball,
+      // },
+    ],
+  },
+  g: {
+    filterName: "글라스",
+    filterList: [
+      {
+        id: 0,
+        value: "highball_glass",
+        filterValue: "하이볼",
+        image: Highball,
+      },
+      {
+        id: 1,
+        value: "cocktail_glass",
+        filterValue: "마티니",
+        image: Martini,
+      },
+      {
+        id: 2,
+        value: "old-fashioned_glass",
+        filterValue: "올드패션드 ",
+        image: Old,
+      },
+      {
+        id: 3,
+        value: "collins_glass",
+        filterValue: "콜린스",
+        image: Collins,
+      },
+      {
+        id: 4,
+        value: "hurricane_glass",
+        filterValue: "허리케인",
+        image: Hurricane,
+      },
+      {
+        id: 5,
+        value: "margarita/Coupette_glass",
+        filterValue: "마가리타",
+        image: Margarita,
+      },
+    ],
+  },
+  i: {
+    filterName: "재료",
+    filterList: [
+      { id: 0, value: "rum", filterValue: "럼", image: Rum },
+      { id: 1, value: "gin", filterValue: "진", image: Gin },
+      { id: 2, value: "vodka", filterValue: "보드카", image: Vodka },
+      { id: 3, value: "scotch", filterValue: "위스키", image: Whiskey },
+      { id: 4, value: "tequila", filterValue: "데킬라", image: Tequila },
+      { id: 5, value: "brandy", filterValue: "브랜디", image: Brandy },
+    ],
+  },
+  a: { filterName: "알코올", filterList: [] },
 }
 // "c" | "g" | "i" | "a"

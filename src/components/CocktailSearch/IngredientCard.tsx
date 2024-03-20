@@ -3,18 +3,24 @@ import { useAppDispatch } from "../../app/hooks"
 import { setSelectedIngredient } from "../../features/cocktail/cocktailSlice"
 import type { IIngredient } from "../../types"
 import { Card, CardActionArea, CardMedia, Typography } from "@mui/material"
+import { useTranslation } from "react-i18next"
 
 interface Props {
   ingred: IIngredient
 }
+
 const IngredientCard = (props: Props) => {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "ingredients",
+  })
+
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
 
   const handleClickDrink = () => {
     dispatch(setSelectedIngredient(props.ingred))
-    navigate(`/drink/${props.ingred.idIngredient}`)
+    navigate(`/ingredient/${props.ingred.idIngredient}`)
   }
 
   return (
@@ -35,7 +41,7 @@ const IngredientCard = (props: Props) => {
         gutterBottom
         variant="subtitle1"
       >
-        {props.ingred.strIngredient}
+        {t(`names.${props.ingred.strIngredient.toLowerCase()}`)}
       </Typography>
     </div>
   )

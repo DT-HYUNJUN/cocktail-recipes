@@ -4,7 +4,9 @@ import type { RootState } from "../../app/store"
 import { useTranslation } from "react-i18next"
 
 const MyBarList = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation("translation", {
+    keyPrefix: "ingredients",
+  })
 
   const myBar = useAppSelector((state: RootState) => state.myBar)
 
@@ -31,7 +33,7 @@ const MyBarList = () => {
                     textAlign="center"
                     variant="body1"
                   >
-                    {t(ingred)}
+                    {t(`names.${ingred}`)}
                   </Typography>
                 </Box>
               </Box>

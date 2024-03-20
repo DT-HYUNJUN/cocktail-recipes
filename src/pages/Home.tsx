@@ -1,12 +1,13 @@
 import { useEffect } from "react"
-import { Box, Container, Typography } from "@mui/material"
+import { Box, Container } from "@mui/material"
 import RecipeCard from "../components/Common/CocktailCard"
 import { getRandomCocktail } from "../features/cocktail/cocktailSlice"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
 import LoadingCard from "../components/Common/LoadingCard"
-import BaseIngredient from "../components/Cocktail/BaseIngredient"
 import HeadText from "../components/Common/HeadText"
+import FilterCard from "../components/Common/FilterCard"
+import { filterData } from "../assets/data/filterData"
 
 const Home = () => {
   const dispatch = useAppDispatch()
@@ -30,7 +31,7 @@ const Home = () => {
       >
         <HeadText variant={"h5"} text={"랜덤 칵테일"} gutterBottom={true} />
         {loading ? <LoadingCard /> : <RecipeCard drink={randomDrink} />}
-        <BaseIngredient />
+        <FilterCard filterData={filterData.c} filter="c" />
       </Box>
     </Container>
   )

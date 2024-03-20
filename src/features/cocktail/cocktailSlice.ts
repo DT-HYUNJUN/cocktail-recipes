@@ -65,6 +65,7 @@ export interface CocktailSliceState {
   count: number
   selectedFilterValue: string
   selectedFilter: "c" | "g" | "i" | "a"
+  tempList: { strDrink: string; strDrinkThumb: string; idDrink: string }[]
   isEnd: boolean
   loading: boolean
 }
@@ -79,6 +80,7 @@ const initialState: CocktailSliceState = {
   count: 0,
   selectedFilterValue: "",
   selectedFilter: "c",
+  tempList: [],
   isEnd: false,
   loading: false,
 }
@@ -260,6 +262,13 @@ export const cocktailSlice = createSlice({
           state.loading = false
         },
       )
+      .addCase(getByIngredient.pending, state => {
+        state.loading = true
+      })
+      .addCase(getByIngredient.fulfilled, (state, action) => {
+        state.tempList = action.payload
+        state.loading = false
+      })
   },
 })
 
@@ -357,6 +366,20 @@ export const getIngredientByName = createAsyncThunk(
     } catch (error) {
       console.log(error)
       throw error
+    }
+  },
+)
+
+// 재료가 쓰이는 칵테일
+export const getByIngredient = createAsyncThunk(
+  "cocktail/getByIngredient",
+  async (ingredient: string) => {
+    try {
+      const res = await fetch(`${baseUrl}/filter.php?i=${ingredient}`)
+      const data = await res.json()
+      return data.drinks.slice(0, 10)
+    } catch (error) {
+      console.log(error)
     }
   },
 )

@@ -3,13 +3,14 @@ import Home from "./pages/Home"
 import { ThemeProvider, createTheme, styled } from "@mui/material"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import DrinkDetail from "./pages/CocktailDetail"
-import BaseIngredDrinks from "./pages/BaseIngredCocktails"
+import BaseIngredDrinks from "./pages/FilteredCocktail"
 import CocktailSearch from "./pages/CocktailSearch"
 import Navbar from "./components/Common/Navbar"
 import BottomNavbar from "./components/Common/BottomNavbar"
 import MyBar from "./pages/MyBar"
 import Cocktail from "./pages/Cocktail"
 import Ingredient from "./pages/Ingredient"
+import IngredientDetail from "./pages/IngredientDetail"
 
 const theme = createTheme({
   typography: {
@@ -38,6 +39,10 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/cocktail" element={<Cocktail />} />
             <Route path="/ingredient" element={<Ingredient />} />
+            <Route
+              path="/ingredient/:strIngredient"
+              element={<IngredientDetail />}
+            />
             <Route path="/cocktail/detail/:idDrink" element={<DrinkDetail />} />
             <Route
               path="/cocktail/:filter/:pathFilterValue"

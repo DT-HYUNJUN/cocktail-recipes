@@ -10,9 +10,14 @@ import { useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
 import { useEffect } from "react"
 import HeadText from "../components/Common/HeadText"
+import { useTranslation } from "react-i18next"
 
 const CocktailDetail = () => {
   const drink = useAppSelector((state: RootState) => state.selectedCocktail)
+
+  const { t } = useTranslation("translation", {
+    keyPrefix: "cocktails",
+  })
 
   useEffect(() => {
     console.log(drink)
@@ -44,7 +49,7 @@ const CocktailDetail = () => {
             </Button>
           </Box>
           <Typography fontFamily="NanumSquareNeoHeavy" variant="h4">
-            {drink.strDrink}
+            {t(drink.strDrink)}
           </Typography>
         </Box>
         {/* 재료 */}
@@ -75,6 +80,7 @@ const CocktailDetail = () => {
                           alt=""
                         />
                         <Typography fontFamily="NanumSquareNeoBold">
+                          {/* {t(ingred.strIngredient)} */}
                           {ingred.strIngredient}
                         </Typography>
                       </Box>

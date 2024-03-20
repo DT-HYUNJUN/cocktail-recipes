@@ -31,7 +31,7 @@ const BaseIngredCocktails = () => {
 
   const dispatch = useAppDispatch()
 
-  const targetFilterValue = filterData[selectedFilter].find(
+  const targetFilterValue = filterData[selectedFilter].filterList.find(
     item => item.value === pathFilterValue,
   )!
 
@@ -72,7 +72,7 @@ const BaseIngredCocktails = () => {
             <IngredImage src={targetFilterValue.image} alt="image" />
             <HeadText
               variant="h6"
-              text={`${targetFilterValue.filterValue} 베이스 칵테일`}
+              text={`${targetFilterValue.filterValue} 칵테일`}
             />
           </Box>
           <Box

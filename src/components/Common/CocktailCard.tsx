@@ -4,12 +4,17 @@ import { useAppDispatch } from "../../app/hooks"
 import { setSelectedCockatil } from "../../features/cocktail/cocktailSlice"
 import type { IDrink } from "../../types"
 import { getById } from "../../features/cocktail/cocktailAPI"
+import { useTranslation } from "react-i18next"
 
 interface Props {
   drink: IDrink
 }
 
 const CocktailCard = (props: Props) => {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "cocktails",
+  })
+
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
@@ -48,6 +53,7 @@ const CocktailCard = (props: Props) => {
         m={0}
         sx={{ boxSizing: "border-box" }}
       >
+        {/* {t(props.drink.strDrink)} */}
         {props.drink.strDrink}
       </Typography>
     </div>

@@ -24,9 +24,6 @@ const Navbar = () => {
 
   return (
     <NavBox>
-      <Box onClick={handleClickHome} p={1}>
-        <HomeOutlinedIcon fontSize="large" color="primary" />
-      </Box>
       <Box component="div" display="flex" justifyContent="center" flexGrow={1}>
         <SearchBar
           inputValue={searchInput}

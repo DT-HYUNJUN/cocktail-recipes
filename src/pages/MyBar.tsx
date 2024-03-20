@@ -3,11 +3,14 @@ import IngredList from "../components/MyBar/IngredList"
 import MyBarList from "../components/MyBar/MyBarList"
 import { useState } from "react"
 import MenuBar from "../components/Common/MenuBar"
-import { useAppSelector } from "../app/hooks"
+import { useAppDispatch, useAppSelector } from "../app/hooks"
 import type { RootState } from "../app/store"
+import { addToMyBar } from "../features/cocktail/cocktailSlice"
 
 const MyBar = () => {
   const [isClickedMyBarList, setIsClickedMyBarList] = useState(true)
+
+  const dispatch = useAppDispatch()
 
   const handleClickMyBarList = () => {
     setIsClickedMyBarList(true)
@@ -15,6 +18,10 @@ const MyBar = () => {
 
   const handleClickIngredList = () => {
     setIsClickedMyBarList(false)
+  }
+
+  const handleClickIngredient = (strIngredient: string) => {
+    dispatch(addToMyBar({ strIngredient }))
   }
 
   const count = useAppSelector((state: RootState) => state.myBar).length
@@ -28,7 +35,11 @@ const MyBar = () => {
           handleClickTwo={handleClickIngredList}
           text={{ one: `마이 바 (${count})`, two: "재료" }}
         />
-        {isClickedMyBarList ? <MyBarList /> : <IngredList />}
+        {isClickedMyBarList ? (
+          <MyBarList />
+        ) : (
+          <IngredList handleClickIngredient={handleClickIngredient} />
+        )}
       </Box>
     </Container>
   )
