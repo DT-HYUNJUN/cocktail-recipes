@@ -38,7 +38,10 @@ const MyBar = () => {
         {isClickedMyBarList ? (
           <MyBarList />
         ) : (
-          <IngredList handleClickIngredient={handleClickIngredient} />
+          <IngredList
+            handleClickIngredient={handleClickIngredient}
+            checkMyBar={true}
+          />
         )}
       </Box>
     </Container>

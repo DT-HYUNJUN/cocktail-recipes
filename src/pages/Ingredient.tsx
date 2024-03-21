@@ -22,7 +22,10 @@ const Ingredient = () => {
 
   return (
     <Container>
-      <IngredList handleClickIngredient={handleClickIngredient} />
+      <IngredList
+        handleClickIngredient={handleClickIngredient}
+        checkMyBar={false}
+      />
     </Container>
   )
 }

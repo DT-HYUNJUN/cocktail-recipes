@@ -17,6 +17,7 @@ import { useEffect, useState } from "react"
 
 interface Props {
   handleClickIngredient: (strIngredient: string) => void
+  checkMyBar: boolean
 }
 
 const IngredList = (props: Props) => {
@@ -77,11 +78,11 @@ const IngredList = (props: Props) => {
                   elevation={3}
                   sx={{
                     padding: 2,
-                    bgcolor: myBar.find(
-                      myIngred => myIngred === ingred.strIngredient,
-                    )
-                      ? "#d9f1ff"
-                      : "white",
+                    bgcolor:
+                      props.checkMyBar &&
+                      myBar.find(myIngred => myIngred === ingred.strIngredient)
+                        ? "#d9f1ff"
+                        : "white",
                   }}
                 >
                   <Box
@@ -101,14 +102,15 @@ const IngredList = (props: Props) => {
                       >
                         {t(`names.${ingred.strIngredient.toLowerCase()}`)}
                       </Typography>
-                      {myBar.find(
-                        myIngred => myIngred === ingred.strIngredient,
-                      ) && (
-                        <CheckCircleOutlineIcon
-                          sx={{ position: "absolute", top: 10, right: 10 }}
-                          color="primary"
-                        />
-                      )}
+                      {props.checkMyBar &&
+                        myBar.find(
+                          myIngred => myIngred === ingred.strIngredient,
+                        ) && (
+                          <CheckCircleOutlineIcon
+                            sx={{ position: "absolute", top: 10, right: 10 }}
+                            color="primary"
+                          />
+                        )}
                     </Box>
                   </Box>
                 </Paper>

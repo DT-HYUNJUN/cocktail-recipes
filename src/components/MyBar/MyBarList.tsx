@@ -33,7 +33,7 @@ const MyBarList = () => {
                     textAlign="center"
                     variant="body1"
                   >
-                    {t(`names.${ingred}`)}
+                    {t(`names.${ingred.toLowerCase()}`)}
                   </Typography>
                 </Box>
               </Box>

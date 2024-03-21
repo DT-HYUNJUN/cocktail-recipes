@@ -5,13 +5,20 @@ import Hurricane from "../images/glass/hurricane.png"
 import Margarita from "../images/glass/margarita.png"
 import Martini from "../images/glass/martini.png"
 import Old from "../images/glass/old.png"
-// filterValue
+// ingredient
 import Rum from "../images/spirit/rum.png"
 import Gin from "../images/spirit/gin.png"
 import Vodka from "../images/spirit/vodka.png"
 import Whiskey from "../images/spirit/whiskey.png"
 import Tequila from "../images/spirit/tequila.png"
 import Brandy from "../images/spirit/brandy.png"
+// category
+import Drink from "../images/category/drink.png"
+import Cocktail from "../images/category/cocktail.png"
+import Shake from "../images/category/shake.png"
+import Shot from "../images/category/shot.png"
+import Cocoa from "../images/category/cocoa.png"
+import Beer from "../images/category/beer.png"
 
 export interface IFilterList {
   id: number
@@ -40,25 +47,25 @@ export const filterData: IFilter = {
         id: 0,
         value: "ordinary_drink",
         filterValue: "일반",
-        image: Highball,
+        image: Drink,
       },
       {
         id: 1,
         value: "cocktail",
         filterValue: "칵테일",
-        image: Highball,
+        image: Cocktail,
       },
       {
         id: 2,
         value: "shake",
         filterValue: "셰이킹",
-        image: Highball,
+        image: Shake,
       },
       {
         id: 3,
         value: "shot",
         filterValue: "샷",
-        image: Highball,
+        image: Shot,
       },
       // {
       //   id: 4,
@@ -70,7 +77,7 @@ export const filterData: IFilter = {
         id: 5,
         value: "cocoa",
         filterValue: "코코아",
-        image: Highball,
+        image: Cocoa,
       },
       // {
       //   id: 6,
@@ -88,7 +95,7 @@ export const filterData: IFilter = {
         id: 8,
         value: "beer",
         filterValue: "맥주",
-        image: Highball,
+        image: Beer,
       },
       // {
       //   id: 9,

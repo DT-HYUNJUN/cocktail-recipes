@@ -259,6 +259,7 @@ export const cocktailSlice = createSlice({
         getIngredientByName.fulfilled,
         (state, action: PayloadAction<IIngredient[]>) => {
           state.ingredientList = action.payload
+          state.selectedIngredient = action.payload[0]
           state.loading = false
         },
       )

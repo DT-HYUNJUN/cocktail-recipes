@@ -129,204 +129,240 @@
     }
   },
   "cocktails": {
-    "3-Mile Long Island Iced Tea": "3마일 롱 아일랜드 티",
+    "name": {
+      "3-Mile Long Island Iced Tea": "3마일 롱 아일랜드 티",
 
-    "410 Gone": "410 Gone",
+      "410 Gone": "410 Gone",
 
-    "50/50": "50/50",
+      "50/50": "50/50",
 
-    "501 Blue": "501 블루",
+      "501 Blue": "501 블루",
 
-    "69 Special": " 69 스페셜",
+      "69 Special": " 69 스페셜",
 
-    "A Day at the Beach": "해변에서의 하루",
+      "A Day at the Beach": "해변에서의 하루",
 
-    "A Furlong Too Late": "",
+      "A Furlong Too Late": "",
 
-    "A midsummernight dream": "한 여름 밤의 꿈",
+      "A midsummernight dream": "한 여름 밤의 꿈",
 
-    "A Night In Old Mandalay": "올드 만달레이의 밤",
+      "A Night In Old Mandalay": "올드 만달레이의 밤",
 
-    "A. J.": "A. J",
+      "A. J.": "A. J",
 
-    "Abbey Cocktail": "수도원 칵테일",
+      "Abbey Cocktail": "수도원 칵테일",
 
-    "Abilene": "애빌린",
+      "Abilene": "애빌린",
 
-    "Absolut Stress #2": "",
+      "Absolut Stress #2": "",
 
-    "Absolutely Cranberry Smash": "",
+      "Absolutely Cranberry Smash": "",
 
-    "Acapulco": "",
+      "Acapulco": "",
 
-    "Adam": "",
+      "Adam": "",
 
-    "Adam Sunrise": "",
+      "Adam Sunrise": "",
 
-    "Adonis Cocktail": "",
+      "Adonis Cocktail": "",
 
-    "Affair": "",
+      "Affair": "",
 
-    "Affinity": "",
+      "Affinity": "",
 
-    "After Dinner Cocktail": "",
+      "After Dinner Cocktail": "",
 
-    "After sex": "",
+      "After sex": "",
 
-    "After Supper Cocktail": "",
+      "After Supper Cocktail": "",
 
-    "Alabama Slammer": "",
+      "Alabama Slammer": "",
 
-    "Alaska Cocktail": "",
+      "Alaska Cocktail": "",
 
-    "Alexander": "",
+      "Alexander": "",
 
-    "Alfie Cocktail": "",
+      "Alfie Cocktail": "",
 
-    "Algonquin": "",
+      "Algonquin": "",
 
-    "Alice in Wonderland": "",
+      "Alice in Wonderland": "",
 
-    "Allegheny": "",
+      "Allegheny": "",
 
-    "Allies Cocktail": "",
+      "Allies Cocktail": "",
 
-    "Almeria": "",
+      "Almeria": "",
 
-    "Almond Chocolate Coffee": "",
+      "Almond Chocolate Coffee": "",
 
-    "Almond Joy": "",
+      "Almond Joy": "",
 
-    "Amaretto And Cream": "",
+      "Amaretto And Cream": "",
 
-    "Amaretto Mist": "",
+      "Amaretto Mist": "",
 
-    "Amaretto Rose": "",
+      "Amaretto Rose": "",
 
-    "Amaretto Shake": "",
+      "Amaretto Shake": "",
 
-    "Amaretto Sour": "",
+      "Amaretto Sour": "",
 
-    "Amaretto Stinger": "",
+      "Amaretto Stinger": "",
 
-    "Amaretto Sunrise": "",
+      "Amaretto Sunrise": "",
 
-    "Amaretto Sunset": "",
+      "Amaretto Sunset": "",
 
-    "Amaretto Tea": "",
+      "Amaretto Tea": "",
 
-    "Americano": "",
+      "Americano": "",
 
-    "Angel Face": "",
+      "Angel Face": "",
 
-    "Applecar": "",
+      "Applecar": "",
 
-    "Apricot Lady": "",
+      "Apricot Lady": "",
 
-    "Archbishop": "",
+      "Archbishop": "",
 
-    "Arise My Love": "",
+      "Arise My Love": "",
 
-    "Arthur Tompkins": "",
+      "Arthur Tompkins": "",
 
-    "Artillery": "",
+      "Artillery": "",
 
-    "AT&T": "",
+      "AT&T": "",
 
-    "Atlantic Sun": "",
+      "Atlantic Sun": "",
 
-    "Atomic Lokade": "",
+      "Atomic Lokade": "",
 
-    "Autodafé": "",
+      "Autodafé": "",
 
-    "Avalon": "",
+      "Avalon": "",
 
-    "Bacardi Cocktail": "",
+      "Bacardi Cocktail": "",
 
-    "Balmoral": "",
+      "Balmoral": "",
 
-    "Banana Daiquiri": "",
+      "Banana Daiquiri": "",
 
-    "Barracuda": "",
+      "Barracuda": "",
 
-    "Bellini": "",
+      "Bellini": "",
 
-    "Bellini Martini": "",
+      "Bellini Martini": "",
 
-    "Bermuda Highball": "",
+      "Bermuda Highball": "",
 
-    "Between The Sheets": "",
+      "Between The Sheets": "",
 
-    "Black Russian": "",
+      "Black Russian": "",
 
-    "Blackthorn": "",
+      "Blackthorn": "",
 
-    "Bloody Maria": "",
+      "Bloody Maria": "",
 
-    "Bloody Mary": "",
+      "Bloody Mary": "",
 
-    "Blue Lagoon": "",
+      "Blue Lagoon": "",
 
-    "Blue Margarita": "",
+      "Blue Margarita": "",
 
-    "Blue Mountain": "",
+      "Blue Mountain": "",
 
-    "Bluebird": "",
+      "Bluebird": "",
 
-    "Bobby Burns Cocktail": "",
+      "Bobby Burns Cocktail": "",
 
-    "Boomerang": "",
+      "Boomerang": "",
 
-    "Boston Sidecar": "",
+      "Boston Sidecar": "",
 
-    "Boston Sour": "",
+      "Boston Sour": "",
 
-    "Bourbon Sling": "",
+      "Bourbon Sling": "",
 
-    "Bourbon Sour": "",
+      "Bourbon Sour": "",
 
-    "Boxcar": "",
+      "Boxcar": "",
 
-    "Bramble": "",
+      "Bramble": "",
 
-    "Brandy Alexander": "",
+      "Brandy Alexander": "",
 
-    "Brandy Cobbler": "",
+      "Brandy Cobbler": "",
 
-    "Brandy Flip": "",
+      "Brandy Flip": "",
 
-    "Brandy Sour": "",
+      "Brandy Sour": "",
 
-    "Caipirinha": "",
+      "Caipirinha": "",
 
-    "Caipirissima": "",
+      "Caipirissima": "",
 
-    "California Lemonade": "",
+      "California Lemonade": "",
 
-    "Casa Blanca": "",
+      "Casa Blanca": "",
 
-    "Casino": "",
+      "Casino": "",
 
-    "Casino Royale": "",
+      "Casino Royale": "",
 
-    "Champagne Cocktail": "",
+      "Champagne Cocktail": "",
 
-    "Cherry Rum": "",
+      "Cherry Rum": "",
 
-    "Chicago Fizz": "",
+      "Chicago Fizz": "",
 
-    "Chocolate Black Russian": "",
+      "Chocolate Black Russian": "",
 
-    "City Slicker": "",
+      "City Slicker": "",
 
-    "Classic Old-Fashioned": "",
+      "Classic Old-Fashioned": "",
 
-    "Clove Cocktail": "",
+      "Clove Cocktail": "",
 
-    "Clover Club": "",
+      "Clover Club": "",
 
-    "Cuba Libra": "",
+      "Cuba Libra": "",
 
-    "Cuba Libre": ""
+      "Cuba Libre": ""
+    },
+    "glass": {
+      "Highball glass": "하이볼 글라스",
+      "Cocktail glass": "칵테일 글라스",
+      "Old-fashioned glass": "올드 패션드 글라스",
+      "Whiskey Glass": "위스키 글라스",
+      "Collins Glass": "콜린스 글라스",
+      "Pousse cafe glass": "푸스 카페 글라스",
+      "Champagne flute": "샴페인 플룻",
+      "Whiskey sour glass": "위스키 사워 글라스",
+      "Cordial glass": "코디얼 글라스",
+      "Brandy snifter": "브랜디 글라스",
+      "White wine glass": "화이트 와인 글라스",
+      "Nick and Nora Glass": "닉 앤 노라 글라스",
+      "Hurricane glass": "허리케인 글라스",
+      "Coffee mug": "커피잔",
+      "Shot glass": "샷 글라스",
+      "Jar": "병",
+      "Irish coffee cup": "아이리쉬 커피 글라스",
+      "Punch bowl": "펀치볼",
+      "Pitcher": "피처 글라스",
+      "Pint glass": "파인트 글라스",
+      "Copper Mug": "구리잔",
+      "Wine Glass": "와인 글라스",
+      "Beer mug": "맥주잔",
+      "Margarita/Coupette glass": "마가리타 글라스",
+      "Beer pilsner": "필스너 글라스",
+      "Beer Glass": "맥주 글라스",
+      "Parfait glass": "파르페 글라스",
+      "Mason jar": "메이슨 병",
+      "Margarita glass": "마가리타 글라스",
+      "Martini Glass": "마티니 글라스",
+      "Balloon Glass": "대형 브랜디 글라스",
+      "Coupe Glass": "쿱 글라스"
+    }
   }
 }

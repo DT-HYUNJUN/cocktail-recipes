@@ -68,4 +68,5 @@ const Wrap = styled("div")({
   boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
   paddingTop: "100px",
   paddingBottom: "100px",
+  backgroundColor: "white",
 })

@@ -21,6 +21,7 @@ const FilterCard = (props: Props) => {
   const handleClickFilter = (value: string) => {
     navigate(`/cocktail/${props.filter}/${value}`)
   }
+
   return (
     <Box sx={{ flexGrow: 1, width: 345 }} mt={4}>
       <HeadText text={props.filterData.filterName} gutterBottom={true} />

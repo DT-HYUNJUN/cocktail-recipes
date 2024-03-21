@@ -85,7 +85,7 @@ const BottomNavbar = () => {
 export default BottomNavbar
 
 const Nav = styled(Box)({
-  minWidth: "375px",
+  maxWidth: "430px",
   boxSizing: "border-box",
   position: "fixed",
   backgroundColor: "white",
