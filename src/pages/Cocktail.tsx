@@ -6,8 +6,6 @@ const Cocktail = () => {
   return (
     <Container>
       <Box display="flex" flexDirection="column" alignItems="center">
-        {/* <BaseIngredient />
-        <BaseGlass /> */}
         <FilterCard filterData={filterData.i} filter="i" />
         <FilterCard filterData={filterData.g} filter="g" />
       </Box>

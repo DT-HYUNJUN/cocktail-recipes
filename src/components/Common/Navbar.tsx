@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom"
 import { Box, styled } from "@mui/material"
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
 import { useState } from "react"
 import SearchBar from "./SearchBar"
 
@@ -8,10 +7,6 @@ const Navbar = () => {
   const [searchInput, setSearchInput] = useState("")
 
   const navigate = useNavigate()
-
-  const handleClickHome = () => {
-    navigate("/")
-  }
 
   const handleInputSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value)

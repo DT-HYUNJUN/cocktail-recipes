@@ -255,7 +255,6 @@ export const cocktailSlice = createSlice({
             })
             state.loading = false
           } else {
-            console.log("no")
             state.cocktailList = []
           }
         },

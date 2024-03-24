@@ -1,6 +1,5 @@
-import { IconButton, styled } from "@mui/material"
+import { styled } from "@mui/material"
 import SearchIcon from "@mui/icons-material/Search"
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded"
 
 interface Props {
   inputValue: string

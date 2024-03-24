@@ -12,6 +12,7 @@ export const getById = async (idDrink: string): Promise<IDrink> => {
     throw error
   }
 }
+
 export const getIngredientByName = async (
   strIngredient: string,
 ): Promise<IIngredient> => {

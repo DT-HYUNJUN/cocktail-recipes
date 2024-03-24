@@ -37,7 +37,6 @@ const BaseIngredCocktails = () => {
 
   useEffect(() => {
     if (selectedFilterValue !== pathFilterValue) {
-      console.log("첫 로딩")
       dispatch(
         getByFilter({
           filterValue: pathFilterValue,
@@ -51,7 +50,6 @@ const BaseIngredCocktails = () => {
 
   useEffect(() => {
     if (count !== 0 && !isEnd && inView) {
-      console.log(`inView checked, count: ${count}`)
       dispatch(
         getByFilter({
           filterValue: pathFilterValue,

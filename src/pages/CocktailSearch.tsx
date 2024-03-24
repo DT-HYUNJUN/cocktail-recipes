@@ -1,7 +1,7 @@
 import { Box, Container } from "@mui/material"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { useAppDispatch, useAppSelector } from "../app/hooks"
+import { useAppDispatch } from "../app/hooks"
 import {
   getByName,
   getIngredientByName,
@@ -10,7 +10,6 @@ import Menu from "../components/Common/MenuBar"
 import Cocktail from "../components/CocktailSearch/Cocktail"
 import Ingredient from "../components/CocktailSearch/Ingredient"
 import { useTranslation } from "react-i18next"
-import type { RootState } from "../app/store"
 import ingreds from "../locales/ko/translation.json"
 
 const engPattern = /[a-zA-Z]/
@@ -28,8 +27,6 @@ const CocktailSearch = () => {
   const { t } = useTranslation("translation", {
     keyPrefix: "ingredients",
   })
-
-  const loading = useAppSelector((state: RootState) => state.loading)
 
   const { name } = useParams() as { name: string }
 
@@ -49,7 +46,6 @@ const CocktailSearch = () => {
 
   useEffect(() => {
     const searchName = checkName(name)
-    console.log(searchName)
     dispatch(getByName(searchName))
     dispatch(getIngredientByName(searchName))
   }, [name])
