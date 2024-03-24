@@ -1,5 +1,6 @@
-import { styled } from "@mui/material"
+import { IconButton, styled } from "@mui/material"
 import SearchIcon from "@mui/icons-material/Search"
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded"
 
 interface Props {
   inputValue: string
@@ -11,7 +12,7 @@ interface Props {
 const SearchBar = (props: Props) => {
   return (
     <SearchForm onSubmit={props.handleSubmitSearch}>
-      <SearchIcon sx={{ color: "grey" }} fontSize="small" />
+      <SearchIcon color="action" fontSize="small" />
       <SearchInput
         value={props.inputValue}
         onChange={props.handleInputSearch}

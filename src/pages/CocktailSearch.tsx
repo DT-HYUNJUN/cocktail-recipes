@@ -1,7 +1,7 @@
 import { Box, Container } from "@mui/material"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { useAppDispatch } from "../app/hooks"
+import { useAppDispatch, useAppSelector } from "../app/hooks"
 import {
   getByName,
   getIngredientByName,
@@ -9,6 +9,11 @@ import {
 import Menu from "../components/Common/MenuBar"
 import Cocktail from "../components/CocktailSearch/Cocktail"
 import Ingredient from "../components/CocktailSearch/Ingredient"
+import { useTranslation } from "react-i18next"
+import type { RootState } from "../app/store"
+import ingreds from "../locales/ko/translation.json"
+
+const engPattern = /[a-zA-Z]/
 
 const CocktailSearch = () => {
   const [isClickedCocktail, setIsClickedCocktail] = useState(true)
@@ -20,13 +25,34 @@ const CocktailSearch = () => {
     setIsClickedCocktail(false)
   }
 
+  const { t } = useTranslation("translation", {
+    keyPrefix: "ingredients",
+  })
+
+  const loading = useAppSelector((state: RootState) => state.loading)
+
   const { name } = useParams() as { name: string }
+
   const dispatch = useAppDispatch()
 
+  const checkName = (name: string) => {
+    if (engPattern.test(name)) {
+      return name
+    } else {
+      if (name in ingreds.ingredients["ko-names"]) {
+        return t(`ko-names.${name}`)
+      } else {
+        return name
+      }
+    }
+  }
+
   useEffect(() => {
-    dispatch(getByName(name))
-    dispatch(getIngredientByName(name))
-  }, [])
+    const searchName = checkName(name)
+    console.log(searchName)
+    dispatch(getByName(searchName))
+    dispatch(getIngredientByName(searchName))
+  }, [name])
 
   return (
     <Container>

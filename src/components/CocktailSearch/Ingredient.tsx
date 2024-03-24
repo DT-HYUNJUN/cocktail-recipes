@@ -2,11 +2,15 @@ import type { RootState } from "../../app/store"
 import { useAppSelector } from "../../app/hooks"
 import { Box, Typography } from "@mui/material"
 import IngredientCard from "../CocktailSearch/IngredientCard"
+import { useEffect } from "react"
+import HeadText from "../Common/HeadText"
+import LoadingCard from "../Common/LoadingCard"
 
 const Ingredient = () => {
   const ingredientList = useAppSelector(
     (state: RootState) => state.ingredientList,
   )
+  const loading = useAppSelector((state: RootState) => state.loading)
 
   return (
     <Box display="flex" flexDirection="column" mt={4}>
@@ -14,12 +18,16 @@ const Ingredient = () => {
         재료
       </Typography>
       <Box display="flex" flexDirection="column" alignItems="center" gap={4}>
-        {ingredientList ? (
+        {loading ? (
+          <LoadingCard />
+        ) : ingredientList.length > 0 ? (
           ingredientList.map(ingred => (
             <IngredientCard key={ingred.idIngredient} ingred={ingred} />
           ))
         ) : (
-          <div>null</div>
+          <Box mt={10}>
+            <HeadText text="검색하신 재료가 없습니다." variant="h6" />
+          </Box>
         )}
       </Box>
     </Box>

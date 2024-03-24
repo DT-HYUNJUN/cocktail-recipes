@@ -219,37 +219,45 @@ export const cocktailSlice = createSlice({
       .addCase(
         getByName.fulfilled,
         (state, action: PayloadAction<IDrinkAPI[]>) => {
-          let id = 0
-          action.payload.forEach(drink => {
-            const temp = {
-              idDrink: drink.idDrink,
-              strDrink: drink.strDrink,
-              strCategory: drink.strCategory,
-              strAlcoholic: drink.strAlcoholic,
-              strGlass: drink.strGlass,
-              strInstructions: drink.strInstructions,
-              strDrinkThumb: drink.strDrinkThumb,
-              ingredients: [{ id: 0, strIngredient: "" }],
-              measures: [{ id: 0, strMeasure: "" }],
-            }
-            for (let i = 1; i <= 15; i++) {
-              const ingredKey = `strIngredient${i}`
-              const ingredValue = drink[ingredKey]
-              if (ingredValue) {
-                temp.ingredients.push({ id: i - 1, strIngredient: ingredValue })
+          if (action.payload.length > 0) {
+            let id = 0
+            action.payload.forEach(drink => {
+              const temp = {
+                idDrink: drink.idDrink,
+                strDrink: drink.strDrink,
+                strCategory: drink.strCategory,
+                strAlcoholic: drink.strAlcoholic,
+                strGlass: drink.strGlass,
+                strInstructions: drink.strInstructions,
+                strDrinkThumb: drink.strDrinkThumb,
+                ingredients: [{ id: 0, strIngredient: "" }],
+                measures: [{ id: 0, strMeasure: "" }],
               }
-            }
-            for (let i = 1; i <= 15; i++) {
-              const measureKey = `strMeasure${i}`
-              const measureValue = drink[measureKey]
-              if (measureValue) {
-                temp.measures.push({ id: i - 1, strMeasure: measureValue })
+              for (let i = 1; i <= 15; i++) {
+                const ingredKey = `strIngredient${i}`
+                const ingredValue = drink[ingredKey]
+                if (ingredValue) {
+                  temp.ingredients.push({
+                    id: i - 1,
+                    strIngredient: ingredValue,
+                  })
+                }
               }
-            }
-            state.cocktailList[id] = temp
-            id += 1
-          })
-          state.loading = false
+              for (let i = 1; i <= 15; i++) {
+                const measureKey = `strMeasure${i}`
+                const measureValue = drink[measureKey]
+                if (measureValue) {
+                  temp.measures.push({ id: i - 1, strMeasure: measureValue })
+                }
+              }
+              state.cocktailList[id] = temp
+              id += 1
+            })
+            state.loading = false
+          } else {
+            console.log("no")
+            state.cocktailList = []
+          }
         },
       )
       .addCase(getIngredientByName.pending, state => {
@@ -341,7 +349,7 @@ export const getByName = createAsyncThunk(
       const res = await fetch(`${baseUrl}/search.php?s=${name}`)
       const data = await res.json()
       if (data.drinks) {
-        return data.drinks.slice(0, 10)
+        return data.drinks
       } else {
         return []
       }

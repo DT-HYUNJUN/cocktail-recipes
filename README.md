@@ -12,6 +12,15 @@
 | --- | --- |
 | **배포** | <img src="https://img.shields.io/badge/NETLIFY-00C7B7?style=for-the-badge&logo=NETLIFY&logoColor=white"/> |
 
+## 커밋 컨벤션
+
+```
+- ADD : 새로운 기능 추가
+- UPDATE : 수정 사항 추가
+- FIX : 버그 수정
+- DELETE : 기존 기능 삭제
+```
+
 # 페이지 소개
 
 - ### 홈 페이지
