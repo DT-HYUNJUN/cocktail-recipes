@@ -25,8 +25,14 @@ const Ingredient = () => {
             <IngredientCard key={ingred.idIngredient} ingred={ingred} />
           ))
         ) : (
-          <Box mt={10}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            mt={10}
+          >
             <HeadText text="검색하신 재료가 없습니다." variant="h6" />
+            <HeadText text="영어로 검색해보세요!" variant="h6" />
           </Box>
         )}
       </Box>

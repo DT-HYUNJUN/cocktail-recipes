@@ -32,12 +32,12 @@ const CocktailSearch = () => {
 
   const dispatch = useAppDispatch()
 
-  const checkName = (name: string) => {
+  const checkName = (name: string, findValue: "ingredient" | "cocktail") => {
     if (engPattern.test(name)) {
       return name
     } else {
-      if (name in ingreds.ingredients["ko-names"]) {
-        return t(`ko-names.${name}`)
+      if (name in ingreds.ingredients[`ko-${findValue}-names`]) {
+        return t(`ko-${findValue}-names.${name}`)
       } else {
         return name
       }
@@ -45,9 +45,9 @@ const CocktailSearch = () => {
   }
 
   useEffect(() => {
-    const searchName = checkName(name)
-    dispatch(getByName(searchName))
-    dispatch(getIngredientByName(searchName))
+    console.log(checkName(name, "cocktail"))
+    dispatch(getByName(checkName(name, "cocktail")))
+    dispatch(getIngredientByName(checkName(name, "ingredient")))
   }, [name])
 
   return (

@@ -26,8 +26,14 @@ const Cocktail = () => {
             <CocktailCard key={drink.idDrink} drink={drink} />
           ))
         ) : (
-          <Box mt={10}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            mt={10}
+          >
             <HeadText text="검색하신 칵테일이 없습니다." variant="h6" />
+            <HeadText text="영어로 검색해보세요!" variant="h6" />
           </Box>
         )}
         {drinkList.length > 0 && <HeadText text="끝" variant="h4" />}
