@@ -16,7 +16,7 @@
 
 ```
 - ADD : 새로운 기능 추가
-- UPDATE : 수정 사항 추가
+- UPDATE : 업데이트 사항 추가
 - FIX : 버그 수정
 - DELETE : 기존 기능 삭제
 ```
@@ -43,6 +43,75 @@
 
 - ### 마이 바 페이지
 
-  |**재료 추가**|
+  <!-- |**재료 추가**|
   |---|
-  |![add](./readme/mybar/add.gif)|
+  |![add](./readme/mybar/add.gif)| -->
+
+# 핵심 기능 
+
+## 무한 스크롤
+
+> 적용 이유
+ - 칵테일 리스트를 확인할 때 무한 스크롤을 적용해 자연스러운 스크롤 이벤트를 통한 사용자 경험을 높이고자 적용했습니다.
+
+> 적용 방식
+ - [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) 를 사용해 구현했습니다.
+ - 스크롤을 감지 할 태그에 `useInview()`훅의 `ref`를 넣고 사용자의 화면이 해당 태그를 감지 할 때를 확인합니다.
+ - `useEffect()`를 통해 감지를 확인할 때마다 추가 데이터를 불러와 기존 칵테일 리스트에 추가합니다.
+ - 만약 불러오는 데이터의 길이가 `10` 미만이면 무한 스크롤을 중지합니다.
+
+
+<details>
+<summary>코드</summary>
+
+**FilteredCocktail.tsx**
+
+```tsx
+const FilteredCocktail = () => {
+  // 스크롤을 감지할 ref
+  const [ref, inView] = useInView()
+
+  // 첫 로딩 -> 10개의 데이터를 불러옴
+  useEffect(() => {
+    if (selectedFilterValue !== pathFilterValue) {
+      dispatch(
+        getByFilter({
+          filterValue: pathFilterValue,
+          count: 0,
+          reset: true,
+          filter,
+        }),
+      )
+    }
+  }, [])
+
+  // inView를 체크할 때마다 추가 데이터를 불러옴
+  useEffect(() => {
+    if (count !== 0 && !isEnd && inView) {
+      dispatch(
+        getByFilter({
+          filterValue: pathFilterValue,
+          count,
+          reset: false,
+          filter,
+        }),
+      )
+    }
+  }, [inView])
+
+  return (
+    drinkList && (
+      <Container>
+        ...
+
+        {drinkList.map(drink => (
+          <CocktailCard key={drink.idDrink} drink={drink} />
+        ))}
+        {isEnd && <HeadText text="끝" variant="h4" />}
+      </Container>
+    )
+    <div ref={ref} />
+  )
+}
+```
+</details>

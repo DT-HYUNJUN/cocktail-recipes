@@ -10,7 +10,7 @@ import { useInView } from "react-intersection-observer"
 import { getByFilter } from "../features/cocktail/cocktailSlice"
 import { filterData } from "../assets/data/filterData"
 
-const BaseIngredCocktails = () => {
+const FilteredCocktail = () => {
   const [ref, inView] = useInView()
 
   const { filter, pathFilterValue } = useParams() as {
@@ -99,7 +99,7 @@ const BaseIngredCocktails = () => {
   )
 }
 
-export default BaseIngredCocktails
+export default FilteredCocktail
 
 const IngredImage = styled("img")({
   width: "40px",
